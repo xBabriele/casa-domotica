@@ -1,0 +1,84 @@
+area {
+    cursor: url('img/pointer.cur'), auto;
+}
+.lamp {
+    position: absolute;
+    width: 40px;
+}
+#setting {
+    position: absolute;
+    top: 440px;
+    left: 460px;
+    width: 70px;
+    background-color: #888;
+    border-radius: 20px;
+    padding: 5px;
+}
+#setting:hover {
+    background-color: #AAA;
+}
+#setting:hover + .lamp {
+    display: none;
+}
+
+/* LUCI DELLA CASA */
+#lamp-mat1 {
+    top: 0;
+    left: 110px;
+}
+#lamp-mat2 {
+    top: 120px;
+    left: 50px;
+}
+
+#lamp-studi1 {
+    top: -12px;
+    left: 220px;
+}
+#lamp-studi2 {
+    top: -12px;
+    left: 345px;
+}
+
+#lamp-room {
+    top: 25px;
+    left: 425px;
+}
+
+#lamp-relax {
+    top: 100px;
+    left: 233px;
+}
+
+#lamp-bagno-mat {
+    top: 170px;
+    left: 50px;
+}
+#lamp-bagno {
+    top: 220px;
+    left: 50px;
+}
+#lamp-bagno-grande {
+    top: 170px;
+    left: 450px;
+}
+
+#lamp-corridoio1 {
+    top: 225px;
+    left: 160px;
+}
+#lamp-corridoio2 {
+    top: 225px;
+    left: 320px;
+}
+
+#lamp-soggiorno {
+    top: 360px;
+    left: 65px;
+}
+
+#lamp-cucina {
+    top: 320px;
+    left: 400px;
+}
+/* FINE LUCI CASA */
