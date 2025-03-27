@@ -1,0 +1,45 @@
+/* From Uiverse.io by vinodjangid07 */ 
+/* To hide the checkbox */
+#checkboxInput1, #checkboxInput2, #checkboxInput3, #checkboxInput4, #checkboxInput5, #checkboxInput6 {
+    display: none;
+}
+
+
+
+.toggleSwitch {
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+width: 50px;
+height: 30px;
+background-color: rgb(126, 126, 126);
+border-radius: 20px;
+cursor: pointer;
+transition-duration: .2s;
+}
+.toggleSwitch::after {
+content: "";
+position: absolute;
+height: 10px;
+width: 10px;
+left: 5px;
+background-color: transparent;
+border-radius: 50%;
+transition-duration: .2s;
+box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
+border: 5px solid white;
+}
+
+
+
+#checkboxInput1:checked+.toggleSwitch::after, #checkboxInput2:checked+.toggleSwitch::after, #checkboxInput3:checked+.toggleSwitch::after, #checkboxInput4:checked+.toggleSwitch::after, #checkboxInput5:checked+.toggleSwitch::after, #checkboxInput6:checked+.toggleSwitch::after{
+transform: translateX(100%);
+transition-duration: .2s;
+background-color: white;
+}
+/* Switch background change */
+#checkboxInput1:checked+.toggleSwitch, #checkboxInput2:checked+.toggleSwitch, #checkboxInput3:checked+.toggleSwitch, #checkboxInput4:checked+.toggleSwitch, #checkboxInput5:checked+.toggleSwitch, #checkboxInput6:checked+.toggleSwitch {
+background-color: #0090cd;
+transition-duration: .2s;
+}

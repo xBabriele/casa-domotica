@@ -1,0 +1,151 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            citecolor=black,
+            urlcolor=blue]{hyperref}  % Configurazione hyperref per link ipertestuali
+
+% Impostazioni pagina
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% Pagina del titolo
+\title{Casa Domotica}
+\author{Team di Sviluppo}
+\date{}
+
+\begin{document}
+
+% Pagina di Copertina
+\begin{titlepage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    {\large\itshape Team di Sviluppo:\par}
+    \vspace{0.2cm}
+    
+    Cociug Raul Andrei - Sviluppatore \\
+    Madiotto Gabriel - Sviluppatore
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    {\Large Azienda: DomotiX\par}
+    \end{minipage}
+    
+    \centering
+    \vspace*{5cm}
+    
+    {\huge\bfseries Casa Domotica\par}
+    \vspace{1.5cm}
+    
+    \vfill
+    
+    % Footer con tabella versioni
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllc@{}}
+    \toprule
+    Versione & Data & Autore & Docenti \\
+    \midrule
+    1.0 & ? & DomotiX(?) & Tollot, Rossi \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    
+    \thispagestyle{empty}
+\end{titlepage}
+
+% Resto del documento rimane invariato
+\tableofcontents
+\newpage
+
+\fancyfoot[C]{\thepage}
+
+% Il resto del documento rimane esattamente come nel documento originale (sezioni precedenti)
+\section{Introduzione}
+\subsection{Descrizione Generale del Progetto}
+L'obiettivo del progetto è quello di sviluppare un sistema che permetta il controllo e il monitoraggio di vari dispositivi domestici attraverso un'interfaccia utente interattiva.
+Il progetto si compone di due principali elementi:\begin{itemize}
+    \item \textbf{La rete della casa domotica}, realizzata mediante il software Cisco Packet Tracer, per simulare la comunicazione tra i vari dispositivi connessi.
+    \item \textbf{L'interfaccia utente}, sviluppata con HTML, CSS e JavaScript, per consentire l'interazione con i dispositivi attraverso un mockup funzionale.\end{itemize}
+
+\subsection{Informazioni Progetto}
+\begin{itemize}
+    \item \textbf{Data Inizio Progetto:} 11 Marzo 2025
+    \item \textbf{Data Fine Prevista:} 14 Maggio 2025
+    \item \textbf{Durata Stimata:} 65 giorni/ 9 settimane
+    \item \textbf{Partecipanti:}
+    \begin{itemize}
+        \item Cociug Raul
+        \item Madiotto Gabriel
+    \end{itemize}
+\end{itemize}
+
+% Resto del documento come nell'originale (sezioni successive)
+\section{Situazione Attuale}
+\subsection{Stato Corrente}
+È stato sviluppato il mockup con HTML, CSS, JavaScript per mostrare l'anteprima dell'interfaccia utente che dovrà essere utilizzata dagli utenti per poter interagire con la casa domotica e i dispositivi connessi ad essa.
+È stato realizzato un pannello di controllo, per la casa e tutte le stanze, con il quale è possibile svolgere numerose funzioni come:\begin{itemize}
+\item Accendere/spegnere le luci
+\item Utilizzo delle telecamere
+\item Controllo della temperatura all'esterno
+\item Controllo della velocità del vento
+\item Verifica dello stato delle porte (aperte/chiuse)
+\end{itemize}
+È stato realizzato anche il questionario da dover porre ai clienti per l'analisi dei requisiti e delle funzionalità da implementare per personalizzare il prodotto come richiesto dal cliente.
+
+\subsection{Materiale Esistente}
+\begin{itemize}
+\item \textbf{Mockup/Interfaccia utente}
+\item \textbf{Questionario}
+\item \textbf{Documentazione del progetto}
+\end{itemize}
+
+\section{Requisiti Hardware e Software}
+\subsection{Requisiti del Cliente}
+\begin{itemize}
+    \item \textbf{Postazione Computer:}
+    \begin{itemize}
+        \item Processore: 
+        \item RAM: 
+        \item Spazio Disco:
+    \end{itemize}
+    
+    \item \textbf{Connettività Internet:}
+    \begin{itemize}
+        \item Velocità Minima:
+        \item Tipo Connessione:
+    \end{itemize}
+\end{itemize}
+
+\section{Requisiti Funzionali}
+\subsection{Richieste Cliente HMI}
+Descrizione dettagliata delle richieste dell'interfaccia uomo-macchina.
+
+\subsection{Specifiche Funzionali}
+Elencare dettagliatamente cosa si vuole ottenere con il progetto.
+
+\subsection{Progettazione Interfaccia Grafica (GUI)}
+\begin{itemize}
+    \item Layout
+    \item Elementi Grafici
+    \item Esperienza Utente
+\end{itemize}
+
+\subsection{Progettazione Rete}
+\begin{itemize}
+    \item Architettura di Rete
+    \item Protocolli
+    \item Sicurezza
+\end{itemize}
+
+\end{document}

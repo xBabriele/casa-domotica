@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Cociug Raul, Gabriel Madiotto">
+    <meta name="description" content="Progetto su una casa domotica, con interfaccia e la rete di quest'ultima. Questo progetto è l'insieme le conoscenze di Cisco Packet Tracer, HTML, CSS e JavaScript (con l'uilizzo anche di ThreeJS).">
+    <meta name="keywords" content="HTML, CSS, JavaScript, ThreeJS, Cisco Packet Tracer, Casa Domotica">
+    <title>Casa Domotica</title>
+    <meta http-equiv="refresh" content="40">
+    <base href="index.html">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../buttons.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="theme">
+    <header>
+        <h1>Sala Relax<hr></h1>
+    </header>
+    <main>
+        <img src="../img/casa dall'alto.png" alt="Casa dall'alto" usemap="#house" id="casa-img">
+
+        <div class="parameters">
+            <h2>Parametri della Sala Relax</h2>
+            <hr>
+            <div class="items">
+                <div class="item" id="ora">
+                    <img src="../img/ora.png" alt="">
+                    <img src="../img/nuvola.png" alt="">
+                    <img src="../img/vento.png" alt="">
+                    <span id="date"></span>
+                    <span id="tempo">Nuvoloso</span>
+                    <span>10 km/h</span>
+                </div>
+                <div class="item" id="electricity"><img src="../img/elettricità.png" alt=""><span>44 kW/h</span></div>
+                <div class="item" id="temperatura"><img src="../img/temperatura.png" alt=""><span>20 °C / 22 °C</span></div>
+                <div class="item" id="lampadine"><img src="../img/lampadina.png" alt="">
+                    <input type="checkbox" id="checkboxInput1" checked>
+                    <label for="checkboxInput1" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="porte"><img src="../img/lucchetto.png" alt="">
+                    <input type="checkbox" id="checkboxInput2" checked>
+                    <label for="checkboxInput2" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="riscaldamento"><img src="../img/termosifone.png" alt="">
+                    <input type="checkbox" id="checkboxInput3" >
+                    <label for="checkboxInput3" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="irrigazione">
+                    <img src="../img/irrigazione.png" alt="">
+                    <input type="checkbox" id="checkboxInput4" checked>
+                    <label for="checkboxInput4" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="tapparelle">
+                    <img src="../img/tapparelle.png" alt="">
+                    <input type="checkbox" id="checkboxInput5">
+                    <label for="checkboxInput5" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="ventilazione">
+                    <img src="../img/condizionatore.png" alt="">
+                    <input type="checkbox" id="checkboxInput6" >
+                    <label for="checkboxInput6" class="toggleSwitch"></label>
+                </div>
+                <div class="item" id="">asd</div>
+                <div class="item" id="">asd</div>
+                <a class="item" id="btn" href="../index.html">Ritorna alla casa</a>
+            </div>
+        </div>
+    </main>
+    
+    <map name="house">
+        <area class="shape" id="Camera" title="Camera Matrimoniale" href="matrimoniale.html" coords="52,48,171,183" shape="rect">
+        <area class="shape" id="Bagno Mat" title="Bagno Matrimoniale" href="bagno matrimoniale.html" coords="55,184,152,224" shape="rect">
+        <area class="shape" id="Bagno" title="Bagno" href="bagno.html" coords="56,227,156,264" shape="rect">
+        <area class="shape" id="Soggiorno" title="Soggiorno" href="soggiorno.html" coords="56,265,182,432" shape="rect">
+        <area class="shape" id="Studio 1" title="Studio 1" href="studio1.html" coords="174,53,251,143" shape="rect">
+        <area class="shape" id="Studio 2" title="Studio 2" href="studio2.html" coords="257,55,351,148" shape="rect">
+        <area class="shape" id="Relax" title="Relax" href="relax.html" coords="197,150,305,233" shape="rect">
+        <area class="shape" id="Camera da letto" title="Camera da letto" href="camera.html" coords="358,54,456,138" shape="rect">
+        <area class="shape" id="Bagno Grande" title="Bagno Grande" href="bagno grande.html" coords="388,161,463,251" shape="rect">
+        <area class="shape" id="Cucina" title="Cucina" href="cucina.html" coords="461,370,321,255" shape="rect">
+    </map>
+
+    <script src="../sheet.js"></script>
+</body>
+</html>
