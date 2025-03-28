@@ -89,6 +89,7 @@ spegni.addEventListener("click", () => {
         if (x.checked == true) {
             btn_accesi += x;
         }
+    }
     if (spegni.previousElementSibling.checked == true) {
         for (let x of btn_spegnibili) {
             x.checked = false;
