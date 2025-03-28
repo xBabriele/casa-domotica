@@ -15,6 +15,7 @@ html {
     color: var(--color-select);
 }
 
+
 /* CLASSI PER IL BODY (STYLE DINAMICO) */
 .theme-light {
     --bg-body: #EEE;
@@ -57,7 +58,7 @@ html {
     --bg-btn: var(--bg-titolo);
     --color-btn: #fff;
     --bg-btn-reverse: #000;
-    --color-btn-reverse: #fff;  
+    --color-btn-reverse: #fff;
 
     --bg-select: #AAA;
     --color-select: #000;
@@ -72,6 +73,7 @@ body {
     background-position: center;
 }
 /* FINE BODY DINAMICO */
+
 
 /* HEADER */
 header {
@@ -199,7 +201,7 @@ img#casa-img {
 }
 #spegni {
     grid-column: span 3;
-    background-color: var(--bg-parameters);
+    background-color: transparent;
     user-select: none;
 }
 

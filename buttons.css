@@ -11,7 +11,7 @@
 }
 /* Hide default HTML checkbox */
 .switch1 input {
-display: none;
+    opacity: 0;
 }
 /* The slider */
 .slider {

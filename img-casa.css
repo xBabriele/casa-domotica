@@ -19,9 +19,6 @@ area {
 #setting:hover {
     background-color: var(--bg-item-hover);
 }
-#setting:hover + .lamp {
-    display: none;
-}
 
 /* LUCI DELLA CASA */
 #lamp-mat1 {
