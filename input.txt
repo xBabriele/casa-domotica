@@ -1,0 +1,4 @@
+temperatura - 20
+vattaggio - 2.7
+vento - 10
+tempo - Nuvoloso
