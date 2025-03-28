@@ -83,12 +83,20 @@ button.addEventListener("click", () => {
 // Evento del bottone di spegnimento
 let spegni = document.querySelector(".switch");
 let btn_spegnibili = document.querySelectorAll(".spegnibile");
-let btn_accesi;
+let btn_accesi = {};
 spegni.addEventListener("click", () => {
-    // metti un array degli elementi spegnibili che hanno l'attr checked == true...
+    for (let x of btn_spegnibili) {
+        if (x.checked == true) {
+            btn_accesi += x;
+        }
     if (spegni.previousElementSibling.checked == true) {
         for (let x of btn_spegnibili) {
             x.checked = false;
         }
+    } else {
+        for (let x of btn_accesi) {
+            x.checked = true;
+        }
     }
+    btn_accesi = {};
 });
