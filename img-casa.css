@@ -10,12 +10,14 @@ area {
     top: 440px;
     left: 460px;
     width: 70px;
-    background-color: #888;
+    background-color: var(--bg-parameters);
     border-radius: 20px;
     padding: 5px;
+    box-shadow: 0 0 10px var(--shadow-parameters);
+    transition: ease-in-out .3s;
 }
 #setting:hover {
-    background-color: #AAA;
+    background-color: var(--bg-item-hover);
 }
 #setting:hover + .lamp {
     display: none;

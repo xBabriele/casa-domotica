@@ -16,7 +16,7 @@ html {
 }
 
 /* CLASSI PER IL BODY (STYLE DINAMICO) */
-.theme {
+.theme-light {
     --bg-body: #EEE;
 
     --bg-titolo: #0090cd;
@@ -26,6 +26,7 @@ html {
     --bg-parameters: #FAFAFA;
     --color-parameters: #000;
     --color-hr-parameters: #000;
+    --shadow-parameters: #AAA;
 
     --bg-item: var(--bg-body);
     --bg-item-hover: #AAA;
@@ -34,6 +35,29 @@ html {
     --color-btn: #fff;
     --bg-btn-reverse: #000;
     --color-btn-reverse: #fff;
+
+    --bg-select: #AAA;
+    --color-select: #000;
+}
+.theme-dark {
+    --bg-body: #333;
+
+    --bg-titolo: #222;
+    --color-titolo: #fff;
+    --color-hr-titolo: #fff;
+
+    --bg-parameters: var(--bg-titolo);
+    --color-parameters: #fff;
+    --color-hr-parameters: #fff;
+    --shadow-parameters: #000;
+
+    --bg-item: var(--bg-body);
+    --bg-item-hover: #555;
+
+    --bg-btn: var(--bg-titolo);
+    --color-btn: #fff;
+    --bg-btn-reverse: #000;
+    --color-btn-reverse: #fff;  
 
     --bg-select: #AAA;
     --color-select: #000;
@@ -95,7 +119,7 @@ img#casa-img {
     transform: scale(1.3);
     user-select: none;
     -webkit-user-drag: none;
-    filter: drop-shadow(0 0 10px #888);
+    filter: drop-shadow(0 0 10px var(--shadow-parameters));
 }
 
 /* DIV PARAMETRI */
@@ -110,7 +134,7 @@ img#casa-img {
     background-color: var(--bg-parameters);
     color: var(--color-parameters);
     box-sizing: border-box;
-    box-shadow: 0 0 15px 1px #AAA;
+    box-shadow: 0 0 15px 1px var(--shadow-parameters);
 }
 .parameters h2 {
     text-align: center;

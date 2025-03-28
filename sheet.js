@@ -11,23 +11,34 @@ let luci = document.getElementById("luci");
 let posta = document.getElementById("posta");
 let telecamere = document.getElementById("telecamere");
 
+let change_theme = document.getElementById("checkbox1");
+let label_check = document.getElementsByClassName("switch1")[0];
+label_check = addEventListener("click", () => {
+    if (change_theme.checked == true) {
+        body.setAttribute("class", "theme-light");
+        change_theme.setAttribute("checked", "false");
+    } else {
+        body.setAttribute("class", "theme-dark");
+        change_theme.setAttribute("checked", "true");
+    }
+});
 
 let data;
 let ora;    // hh:mm:ss
 let ore;    // hh
-let evento = addEventListener("load", function() {
+let load = addEventListener("load", function() {
     data = new Date();
 
     ore = data.getHours();
-/*
-    if (ore >= 6 && ore < 18) {
-        body.setAttribute("class", "morning");
-    } else if (ore >= 18 && ore < 20) {
-        body.setAttribute("class", "sunset");
+
+    if (ore >= 6 && ore <= 18) {
+        change_theme.setAttribute("checked", true);
+        body.setAttribute("class", "theme-light");
     } else {
-        body.setAttribute("class", "evening");
+        change_theme.setAttribute("checked", false);
+        body.setAttribute("class", "theme-dark");
     }
-*/
+
     ora = new Intl.DateTimeFormat('it-IT', {      // l'ora nel div parameters
         hour: '2-digit',
         minute: '2-digit',
@@ -51,3 +62,18 @@ setInterval(function () {
 
     date.innerHTML = ora;
 }, 1000);
+
+let setting = document.getElementById("setting");
+let lampadine = document.getElementsByClassName("lamp");
+setting = addEventListener("click", () => {
+    if (lampadine[0].style.display != "none") {
+        for (let x of lampadine) {
+            x.style.display = "none";
+        }
+    } else {
+        for (let x of lampadine) {
+            x.style.display = "";
+        }
+    }
+    
+});
