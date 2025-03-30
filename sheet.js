@@ -23,8 +23,8 @@ let cambio_temp = true;
 
 let body = document.getElementsByTagName("body")[0];
 
-let percorso = window.location.pathname;
-let nomePag = decodeURIComponent(percorso.substring(percorso.lastIndexOf("/") + 1, percorso.lastIndexOf(".")));
+let percorso = window.location.pathname;    // Nome percorso corrente (se nella pagina della camera da letto restituira la stringa del link alla camera)
+let nomePag = decodeURIComponent(percorso.substring(percorso.lastIndexOf("/") + 1, percorso.lastIndexOf(".")));     // Prendo solamente il nome del file html (per accendere/spegnere le luci della singola stanza)
 
 // Evento per il cambio di tema del sito
 let change_theme = document.getElementById("checkbox1");
@@ -131,7 +131,6 @@ function spegniLuci() {
         }
         if (nomePag != "index" && nomePag != "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
-            alert(nomePag)
         } else if (nomePag == "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
             luci[1].src = "img/lamp-spenta.png";
@@ -210,8 +209,6 @@ btn_roomba.addEventListener("click", () => {
 });
 
 
-
-
 // Evento del bottone di spegnimento completo
 let spegni = document.querySelector(".switch");
 let btn_spegnibili = document.querySelectorAll(".spegnibile");
@@ -245,21 +242,23 @@ spegni.addEventListener("click", () => {
         }
     } else {    // Riattiva i bottoni che erano accesi
         for (let x of btn_accesi) {
-            switch (x.parentNode.id) {
-                case "lampadine":
-                    spegniLuci();
-                    break;
-                case "riscaldamento":
-                    consumo += 0.4;
-                    break;
-                case "condizionatore":
-                    consumo += 0.15;
-                    break;
-                case "roomba":
-                    consumo += 0.1;
-                    break;
+            if (!x.checked) {       // Se il bottone messo all'interno dell'array si è riacceso prima di cliccare questo bottone un'altra volta
+                switch (x.parentNode.id) {
+                    case "lampadine":
+                        spegniLuci();
+                        break;
+                    case "riscaldamento":
+                        consumo += 0.4;
+                        break;
+                    case "condizionatore":
+                        consumo += 0.15;
+                        break;
+                    case "roomba":
+                        consumo += 0.1;
+                        break;
+                }
+                x.checked = true;
             }
-            x.checked = true;
         }
     }
 });
