@@ -130,6 +130,7 @@ function spegniLuci() {
             }
         }
         if (nomePag != "" && nomePag != "index" && nomePag != "matrimoniale") {
+            alert(nomePag)
             luci[0].src = "img/lamp-spenta.png";
         } else if (nomePag == "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
