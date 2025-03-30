@@ -82,12 +82,10 @@ header {
     height: 17dvh;
     min-height: 100px;
     box-sizing: border-box;
-    display: grid;
+    position: relative;
+    display: flex;
     justify-content: center;
-    justify-items: center;
-    align-content: center;
     align-items: center;
-    grid-template-columns: 1fr 1fr 1fr;
 }
 hr {
     width: 60px;
@@ -108,6 +106,7 @@ main {
     justify-items: center;
     justify-content: center;
     align-items: center;
+    align-content: center;
     gap: 35px;
     padding: 50px 0;
     box-sizing: border-box;
@@ -128,8 +127,8 @@ img#casa-img {
 .parameters {
     width: 100%;
     max-width: 700px;
-    height: 70vh;
-    min-height: 600px;
+    height: fit-content;
+    min-height: 70vh;
     border-radius: 20px;
     padding: 15px;
     margin-right: 20px;
@@ -205,6 +204,11 @@ img#casa-img {
     user-select: none;
 }
 
+.clear {
+    clear: both;
+    position: relative;
+}
+
 
 
 @media screen and (max-width: 1400px) {
@@ -249,11 +253,11 @@ img#casa-img {
 @media screen and (max-width: 500px) {
     div.img-casa {
         top: -70px;
-        transform: scale(0.55);
+        transform: scale(0.6);
     }
     .parameters {
-        transform: translateY(-80px);        max-width: 300px;
-        min-height: 775px;
+        transform: translateY(-80px);
+        max-width: 300px;
     }
     main {
         max-height: 1270px;
@@ -266,7 +270,7 @@ img#casa-img {
         min-height: 91px;
     }
 }
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 400px) {
     body {
         font-size: 15px;
     }
@@ -275,7 +279,6 @@ img#casa-img {
     }
     .parameters {
         max-width: 250px;
-        min-height: 850px;
     }
     .items {
         row-gap: 15px;

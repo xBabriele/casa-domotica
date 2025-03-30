@@ -3,6 +3,7 @@
 .switch1 {
     font-size: 17px;
     position: relative;
+    left: calc(45% - 4em);
     display: inline-block;
     width: 4em;
     height: 2.2em;

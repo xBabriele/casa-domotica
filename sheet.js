@@ -4,7 +4,10 @@
 /*let temperatura = prompt("Inserire la temperatura iniziale della casa", 20);
 let vattaggio = prompt("Inserire il vattaggio di consumo iniziale della casa (kw/h)", 2);
 let vento = prompt("Inserire la velocità del vento fuori dalla casa (km/h)", 10);*/
+let temperatura = 20;
 let cambio_temp = true;
+let consumo = 1.5;
+let cambio_consumo = true;
 
 let body = document.getElementsByTagName("body")[0];
 
@@ -19,10 +22,13 @@ label_check.addEventListener("click", () => {
     }
 });
 
-// Prende la data e mette il tema secondo l'ora qualora si va ad aggiornare la pagina
+// Prende la data e mette il tema secondo l'ora qualora si va ad aggiornare la pagina | mette il consumo e la temperatura iniziale della casa
 let data;
 let ora;    // hh:mm:ss
 let ore;    // hh
+let testo_temp = document.getElementById("temperatura").childNodes[1];  // span della temperatura
+let testo_consumo = document.getElementById("electricity").childNodes[1];   // span del consumo elettrico
+
 let load = addEventListener("load", function() {
     data = new Date();
 
@@ -44,6 +50,9 @@ let load = addEventListener("load", function() {
     }).format(data);
 
     date.innerHTML = ora;
+
+    testo_temp.innerHTML = temperatura + " °C";
+    testo_consumo.innerHTML = consumo + " kW/h";
 });
 // Aggiorna data ogni secondo
 setInterval(function () {
@@ -60,13 +69,15 @@ setInterval(function () {
 }, 1000);
 
 
-let testo_temp = document.getElementById("temperatura").childNodes[1];  // span della temperatura
-// Settaggio temperatura
+// Settaggio temperatura e consumo elettrico
 setInterval(() => {
     if (cambio_temp) {
         testo_temp.innerHTML = temperatura + " °C";
     }
-}, 5000);
+    if (cambio_consumo) {
+        testo_consumo.innerHTML = consumo + " kW/h";
+    }
+}, 1000);
 
 
 // Evento per nascondere lampadine all'interno della casa (per visualizzarla meglio)
@@ -86,6 +97,7 @@ button.addEventListener("click", () => {
     }
 });
 
+
 // Evento del bottone di spegnimento luci
 let btn_spegni = document.getElementById("check1").nextElementSibling;
 let luci = document.querySelectorAll(".lamp");
@@ -102,10 +114,14 @@ btn_spegni.addEventListener("click", () => {
         for (let x of luci) {     // spegne i bottoni
             x.src = "img/lamp-spenta.png";
         }
+        cambio_consumo = true;
+        consumo -= 0.1;
     } else {    // Riattiva i bottoni che erano accesi
         for (let i=0; i < luci_accese.length; i++) {
             luci_accese[i].src = "img/lampadina.png";
         }
+        cambio_consumo = true;
+        consumo += 0.1;
     }
 });
 
@@ -114,14 +130,43 @@ btn_spegni.addEventListener("click", () => {
 let btn_termosifone = document.getElementById("check3").nextElementSibling;
 let btn_condizionatore = document.getElementById("check6").nextElementSibling;
 btn_termosifone.addEventListener("click", () => {
-    if (!btn_termosifone.previousElementSibling.checked) {
+    if (!btn_termosifone.previousElementSibling.checked) {      // quando attivo il termosifone, disattivo il condizionatore in automatico
         btn_condizionatore.previousElementSibling.checked = false;
-        setInterval(() => {
-            temperatura++;
-            testo_temp = temperatura + " °C";
-        }, 15000)
+        cambio_temp=true;
+        cambio_consumo = true;
+        consumo += 0.4;
+    } else {
+        consumo -= 0.4;
     }
 });
+btn_condizionatore.addEventListener("click", () => {
+    if (!btn_condizionatore.previousElementSibling.checked) {   // quando attivo il condizionatore, disattivo il termosifone in automatico
+        btn_termosifone.previousElementSibling.checked = false;
+        cambio_temp=true;
+        cambio_consumo = true;
+        consumo += 0.15;
+    } else {
+        consumo -= 0.15;
+    }
+});
+setInterval(() => {
+    if (btn_termosifone.previousElementSibling.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
+        temperatura++;
+        if (temperatura >= 26) {
+            btn_termosifone.previousElementSibling.checked = false;
+            consumo -= 0.4;
+        }
+    }
+    if (btn_condizionatore.previousElementSibling.checked) {    // Diminuisce la temperatura di un grado oghni 8 secondi fino ad arrivare a 14 gradi
+        temperatura--;
+        if (temperatura <= 14) {
+            btn_condizionatore.previousElementSibling.checked = false;
+            consumo -= 0.15;
+        }
+    }
+}, 8000);
+
+
 
 
 
@@ -138,11 +183,41 @@ spegni.addEventListener("click", () => {
             }
         }
         for (let x of btn_spegnibili) {     // spegne i bottoni
+            if (x.checked) {
+                switch (x.parentNode.id) {
+                    case "lampadine":
+                        consumo -= 0.1;
+                        break;
+                    case "riscaldamento":
+                        consumo -= 0.4;
+                        break;
+                    case "condizionatore":
+                        consumo -= 0.15;
+                        break;
+                    case "rumba":
+                        consumo -= 0.1;
+                        break;
+                }
+            }
             x.checked = false;
         }
     } else {    // Riattiva i bottoni che erano accesi
-        for (let i=0; i < btn_accesi.length; i++) {
-            btn_accesi[i].checked = true;
+        for (let x of btn_accesi) {
+            x.checked = true;
+            switch (x.parentNode.id) {
+                case "lampadine":
+                    consumo += 0.1;
+                    break;
+                case "riscaldamento":
+                    consumo += 0.4;
+                    break;
+                case "condizionatore":
+                    consumo += 0.15;
+                    break;
+                case "rumba":
+                    consumo += 0.1;
+                    break;
+            }
         }
     }
 });
