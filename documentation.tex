@@ -90,8 +90,8 @@ Il progetto si compone di due principali elementi:\begin{itemize}
 È stato sviluppato il mockup con HTML, CSS, JavaScript per mostrare l'anteprima dell'interfaccia utente che dovrà essere utilizzata dagli utenti per poter interagire con la casa domotica e i dispositivi connessi ad essa.
 È stato realizzato un pannello di controllo, per la casa e tutte le stanze, con il quale è possibile svolgere numerose funzioni come:\begin{itemize}
 \item Accendere/spegnere le luci
-\item Controllo della temperatura
-\item Controllo della velocità del vento
+\item Visualizzazione della temperatura
+\item Visualizzazione della velocità del vento
 \item Verifica dello stato delle porte (aperte/chiuse)
 \end{itemize}
 È stato realizzato anche il questionario da dover porre ai clienti per l'analisi dei requisiti e delle funzionalità da implementare per personalizzare il prodotto come richiesto dal cliente.
@@ -104,11 +104,12 @@ Il progetto si compone di due principali elementi:\begin{itemize}
 \end{itemize}
 
 \section{Requisiti Hardware e Software}
-\subsection{Requisiti del Cliente}
+\subsection{Requisiti non funzionali}
 \begin{itemize}
     \item \textbf{Requisiti Hardware:}
     \begin{itemize}
         \item Dispositivi per l'utilizzo dell'interfaccia come smartphone, tablet o computer (fisso o portatile)
+        \item Connessione wifi/a internet
     \end{itemize}
     
     \item \textbf{Requisiti Software:}
@@ -124,7 +125,7 @@ Il cliente ha richiesto un'interfaccia semplice, intuitiva e facilmente utilizza
 
 \subsection{Specifiche Funzionali}
 Il sistema deve soddisfare requisiti come:\begin{itemize}
-    \item Controllo meteo, velocità del vento e tempo
+    \item Visualizzazione meteo, velocità del vento e tempo
     \item Rilevazione energia totale utilizzata e temperatura all'interno della casa domotica
     \item Gestione porte con lucchetto da remoto (aprire/chiudere)
     \item Controllo e gestione delle lampadine (accendere/spegnere)
@@ -133,11 +134,12 @@ Il sistema deve soddisfare requisiti come:\begin{itemize}
     \item Accensione e spegnimento delle serrande
     \item Accensione e spegnimento dell'aria condizionata
     \item Gestione dell'aspirapolvere automatico (Roomba)
+    \item Gestione del riscaldamento in casa (termosifoni)
 \end{itemize}
 
 \subsection{Progettazione Interfaccia Grafica (GUI)}
 \begin{itemize}
-    \item \textbf{Il Layout}, formato da un header con l'opzione di modalità notturna, la casa domotica sulla destra e il pannello di controllo con tutte le funzionalità previste per il sistema.
+    \item \textbf{Il Layout}, formato da un header con l'opzione di modalità notturna, la casa domotica sulla sinistra e il pannello di controllo con tutte le funzionalità previste per il sistema.
     La disposizione degli elementi è stata ottimizzata per schermi di diverse dimensioni, implementando un design responsive che si adatta automaticamente a tablet e dispositivi mobili.
     \item \textbf{Elementi Grafici}, i quali sono stati selezionati e progettati per garantire coerenza visiva e migliorare la comunicazione con l'utente:\begin{itemize}
         \item I colori, utilizzando un tema per il giorno, con tonalità azzurre su sfondo bianco, e un tema per la notte, con colori come grigio e nero.
