@@ -10,29 +10,28 @@
 \usepackage[colorlinks=true,
             linkcolor=black,
             citecolor=black,
-            urlcolor=blue]{hyperref}  % Configurazione hyperref per link ipertestuali
+            urlcolor=blue]{hyperref}
 
-% Impostazioni pagina
 \geometry{a4paper, margin=2.5cm}
 \pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
+\fancyhead[L]{DomotiX}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[C]{\thepage}
 
-% Pagina del titolo
 \title{Casa Domotica}
 \author{Team di Sviluppo}
 \date{}
 
 \begin{document}
 
-% Pagina di Copertina
 \begin{titlepage}
     \begin{minipage}[t]{0.4\textwidth}
     \raggedright
     {\large\itshape Team di Sviluppo:\par}
     \vspace{0.2cm}
     
-    Cociug Raul Andrei - Sviluppatore \\
+    Cociug Raul Andrei - Sviluppatore 
     Madiotto Gabriel - Sviluppatore
     \end{minipage}
     \hfill
@@ -44,19 +43,18 @@
     \centering
     \vspace*{5cm}
     
-    {\huge\bfseries Casa Domotica\par}
+    {\Huge\bfseries Casa Domotica\par}
     \vspace{1.5cm}
     
     \vfill
     
-    % Footer con tabella versioni
     \begin{table}[h]
     \centering
     \begin{tabular}{@{}lllc@{}}
     \toprule
     Versione & Data & Autore & Docenti \\
     \midrule
-    1.0 & ? & DomotiX(?) & Tollot, Rossi \\
+    1.0 & 31/03/2025 & DomotiX & Tollot, Rossi \\
     \bottomrule
     \end{tabular}
     \end{table}
@@ -64,13 +62,10 @@
     \thispagestyle{empty}
 \end{titlepage}
 
-% Resto del documento rimane invariato
 \tableofcontents
+\thispagestyle{fancy}
 \newpage
 
-\fancyfoot[C]{\thepage}
-
-% Il resto del documento rimane esattamente come nel documento originale (sezioni precedenti)
 \section{Introduzione}
 \subsection{Descrizione Generale del Progetto}
 L'obiettivo del progetto è quello di sviluppare un sistema che permetta il controllo e il monitoraggio di vari dispositivi domestici attraverso un'interfaccia utente interattiva.
@@ -90,15 +85,13 @@ Il progetto si compone di due principali elementi:\begin{itemize}
     \end{itemize}
 \end{itemize}
 
-% Resto del documento come nell'originale (sezioni successive)
 \section{Situazione Attuale}
 \subsection{Stato Corrente}
 È stato sviluppato il mockup con HTML, CSS, JavaScript per mostrare l'anteprima dell'interfaccia utente che dovrà essere utilizzata dagli utenti per poter interagire con la casa domotica e i dispositivi connessi ad essa.
 È stato realizzato un pannello di controllo, per la casa e tutte le stanze, con il quale è possibile svolgere numerose funzioni come:\begin{itemize}
 \item Accendere/spegnere le luci
-\item Utilizzo delle telecamere
-\item Controllo della temperatura all'esterno
-\item Controllo della velocità del vento
+\item Visualizzazione della temperatura
+\item Visualizzazione della velocità del vento
 \item Verifica dello stato delle porte (aperte/chiuse)
 \end{itemize}
 È stato realizzato anche il questionario da dover porre ai clienti per l'analisi dei requisiti e delle funzionalità da implementare per personalizzare il prodotto come richiesto dal cliente.
@@ -111,41 +104,55 @@ Il progetto si compone di due principali elementi:\begin{itemize}
 \end{itemize}
 
 \section{Requisiti Hardware e Software}
-\subsection{Requisiti del Cliente}
+\subsection{Requisiti non funzionali}
 \begin{itemize}
-    \item \textbf{Postazione Computer:}
+    \item \textbf{Requisiti Hardware:}
     \begin{itemize}
-        \item Processore: 
-        \item RAM: 
-        \item Spazio Disco:
+        \item Dispositivi per l'utilizzo dell'interfaccia come smartphone, tablet o computer (fisso o portatile)
+        \item Connessione wifi/a internet
     \end{itemize}
     
-    \item \textbf{Connettività Internet:}
+    \item \textbf{Requisiti Software:}
     \begin{itemize}
-        \item Velocità Minima:
-        \item Tipo Connessione:
+        \item Applicativi per l'utilizzo dell'interfaccia/IDE (es. VS Code)
+        \item Cisco Packet Tracer per utilizzo della rete
     \end{itemize}
 \end{itemize}
 
 \section{Requisiti Funzionali}
 \subsection{Richieste Cliente HMI}
-Descrizione dettagliata delle richieste dell'interfaccia uomo-macchina.
+Il cliente ha richiesto un'interfaccia semplice, intuitiva e facilmente utilizzabile per controllare i dispositivi della casa domotica e interagire con il sistema realizzato.
 
 \subsection{Specifiche Funzionali}
-Elencare dettagliatamente cosa si vuole ottenere con il progetto.
+Il sistema deve soddisfare requisiti come:\begin{itemize}
+    \item Visualizzazione meteo, velocità del vento e tempo
+    \item Rilevazione energia totale utilizzata e temperatura all'interno della casa domotica
+    \item Gestione porte con lucchetto da remoto (aprire/chiudere)
+    \item Controllo e gestione delle lampadine (accendere/spegnere)
+    \item Irrigazione delle piante
+    \item Controllo e gestione delle serrande (alzare/abbassare)
+    \item Accensione e spegnimento delle serrande
+    \item Accensione e spegnimento dell'aria condizionata
+    \item Gestione dell'aspirapolvere automatico (Roomba)
+    \item Gestione del riscaldamento in casa (termosifoni)
+\end{itemize}
 
 \subsection{Progettazione Interfaccia Grafica (GUI)}
 \begin{itemize}
-    \item Layout
-    \item Elementi Grafici
-    \item Esperienza Utente
+    \item \textbf{Il Layout}, formato da un header con l'opzione di modalità notturna, la casa domotica sulla sinistra e il pannello di controllo con tutte le funzionalità previste per il sistema.
+    La disposizione degli elementi è stata ottimizzata per schermi di diverse dimensioni, implementando un design responsive che si adatta automaticamente a tablet e dispositivi mobili.
+    \item \textbf{Elementi Grafici}, i quali sono stati selezionati e progettati per garantire coerenza visiva e migliorare la comunicazione con l'utente:\begin{itemize}
+        \item I colori, utilizzando un tema per il giorno, con tonalità azzurre su sfondo bianco, e un tema per la notte, con colori come grigio e nero.
+        \item Tipografia, sono stati utilizzati caratteri Arial per migliorare la leggibilità su tutti i dispositivi.
+        \item Iconografia, sono state utilizzate icone semplici da comprendere per gli utenti.
+        \item Componenti interattivi come pulsanti, campi di input e controlli sono stati progettati con stati visivi chiari (normale, hover, attivo, disabilitato) per comunicare efficacemente il loro stato all'utente.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Progettazione Rete}
-\begin{itemize}
-    \item Architettura di Rete
-    \item Protocolli
-    \item Sicurezza
+Il sistema domotico richiede una rete per la comunicazione tra i dispositivi. La progettazione della rete include:\begin{itemize}
+    \item Corretto posizionamento dei dispositivi di rete
+    \item Controllo e monitoraggio della rete per la rilevazione di eventuali malfunzionamenti
 \end{itemize}
 
 \end{document}
