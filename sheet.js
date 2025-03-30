@@ -129,7 +129,7 @@ function spegniLuci() {
                 luci_accese[j] = luci[i];
             }
         }
-        if (nomePag != "index" && nomePag != "matrimoniale") {
+        if (nomePag != "" && nomePag != "index" && nomePag != "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
         } else if (nomePag == "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
