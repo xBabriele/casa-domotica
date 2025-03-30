@@ -7,7 +7,6 @@
     <meta name="description" content="Progetto su una casa domotica, con interfaccia e la rete di quest'ultima. Questo progetto è l'insieme le conoscenze di Cisco Packet Tracer, HTML, CSS e JavaScript (con l'uilizzo anche di ThreeJS).">
     <meta name="keywords" content="HTML, CSS, JavaScript, ThreeJS, Cisco Packet Tracer, Casa Domotica">
     <title>Casa Domotica</title>
-    <meta http-equiv="refresh" content="120">
     <base href="index.html">
 
     <link rel="stylesheet" href="style.css">
@@ -18,7 +17,8 @@
 </head>
 
 <body class="theme-light">
-    <header>
+    <div class="header">
+        <h1 style="grid-area: 1 / 2; text-align: center; padding-left: 68px; position: relative; z-index: 2;">Casa Domotica<hr></h1>
         <label class="switch1" style="grid-area: 1 / 3;">
             <input id="checkbox1" type="checkbox" />
             <span class="slider">
@@ -34,9 +34,8 @@
                 </svg>
             </span>
         </label>
-        <h1 style="grid-area: 1 / 2; text-align: center;">Casa Domotica<hr></h1>
-    </header>
-    <main>
+    </div class="header">
+    <div class="main">
         <div class="img-casa">
             <div class="clear"></div>
 
@@ -64,13 +63,13 @@
             <hr>
             <div class="items">
                 <!-- Parametri -->
-                <div class="item" id="ora">
+                <div class="item" id="ora_tempo_vento">
                     <img src="img/ora.png" alt="">
                     <img src="img/nuvola.png" alt="">
                     <img src="img/vento.png" alt="">
                     <span id="date"></span>
-                    <span id="tempo">Nuvoloso</span>
-                    <span>10 km/h</span>
+                    <span id="meteo">Nuvoloso</span>
+                    <span id="vento"></span>
                 </div>
                 <div class="item" id="electricity"><img src="img/elettricità.png" alt=""><span>2 kW/h</span></div>
                 <div class="item" id="temperatura"><img src="img/temperatura.png" alt=""><span>22 °C</span></div>
@@ -102,7 +101,7 @@
                     <input type="checkbox" class="checkboxInput spegnibile" id="check6" >
                     <label for="check6" class="toggleSwitch"></label>
                 </div>
-                <div class="item" id="rumba">
+                <div class="item" id="roomba">
                     <img src="img/rumba.png" alt="">
                     <input type="checkbox" class="checkboxInput spegnibile" id="check7">
                     <label for="check7" class="toggleSwitch"></label>
@@ -119,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </main>
+    </div class="main">
     
     <map name="house">
         <area class="shape" id="Camera" title="Camera Matrimoniale" href="Stanze/matrimoniale.html" coords="52,48,171,183" shape="rect">

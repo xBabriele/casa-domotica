@@ -6,71 +6,81 @@
     <meta name="author" content="Cociug Raul, Gabriel Madiotto">
     <meta name="description" content="Progetto su una casa domotica, con interfaccia e la rete di quest'ultima. Questo progetto è l'insieme le conoscenze di Cisco Packet Tracer, HTML, CSS e JavaScript (con l'uilizzo anche di ThreeJS).">
     <meta name="keywords" content="HTML, CSS, JavaScript, ThreeJS, Cisco Packet Tracer, Casa Domotica">
-    <title>Casa Domotica</title>
-    <meta http-equiv="refresh" content="40">
-    <base href="#">
+    <title>Camera Matrimoniale</title>
 
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../img-casa.css">
     <link rel="stylesheet" href="../buttons.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
 </head>
 
-<body class="theme">
-    <header>
-        <h1>Studio 2<hr></h1>
-    </header>
-    <main>
-        <img src="../img/casa dall'alto.png" alt="Casa dall'alto" usemap="#house" id="casa-img">
+<body class="theme-light">
+    <div class="header">
+        <h1 style="grid-area: 1 / 2; text-align: center; padding-left: 68px; position: relative; z-index: 2;">Camera Matrimoniale<hr></h1>
+        <label class="switch1" style="grid-area: 1 / 3;">
+            <input id="checkbox1" type="checkbox" />
+            <span class="slider">
+                <div class="star star_1"></div>
+                <div class="star star_2"></div>
+                <div class="star star_3"></div>
+                <svg viewBox="0 0 16 16" class="cloud_1 cloud">
+                <path
+                    transform="matrix(.77976 0 0 .78395-299.99-418.63)"
+                    fill="#fff"
+                    d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
+                ></path>
+                </svg>
+            </span>
+        </label>
+    </div class="header">
+    <div class="main">
+        <div class="img-casa">
+            <div class="clear"></div>
+
+            <img src="img/casa dall'alto.png" alt="Casa dall'alto" usemap="#house" id="casa-img">
+            
+            <img src="img/lampadina.png" alt="" class="lamp" id="lamp-mat1">
+            <img src="img/lampadina.png" alt="" class="lamp" id="lamp-mat2">
+            
+            <img src="img/lampadina.png" alt="" id="setting">
+        </div>
 
         <div class="parameters">
-            <h2>Parametri dello Studio 2</h2>
+            <h2>Pannello di Controllo della Camera Matrimoniale</h2>
             <hr>
             <div class="items">
-                <div class="item" id="ora">
-                    <img src="../img/ora.png" alt="">
-                    <img src="../img/nuvola.png" alt="">
-                    <img src="../img/vento.png" alt="">
+                <!-- Parametri -->
+                <div class="item" id="ora_tempo_vento">
+                    <img src="img/ora.png" alt="">
+                    <img src="img/nuvola.png" alt="">
+                    <img src="img/vento.png" alt="">
                     <span id="date"></span>
-                    <span id="tempo">Nuvoloso</span>
-                    <span>10 km/h</span>
+                    <span id="meteo">Nuvoloso</span>
+                    <span id="vento"></span>
                 </div>
-                <div class="item" id="electricity"><img src="../img/elettricità.png" alt=""><span>44 kW/h</span></div>
-                <div class="item" id="temperatura"><img src="../img/temperatura.png" alt=""><span>20 °C / 22 °C</span></div>
-                <div class="item" id="lampadine"><img src="../img/lampadina.png" alt="">
-                    <input type="checkbox" id="checkboxInput1" checked>
-                    <label for="checkboxInput1" class="toggleSwitch"></label>
+                <div class="item" id="electricity"><img src="img/elettricità.png" alt=""><span>2 kW/h</span></div>
+                <div class="item" id="temperatura"><img src="img/temperatura.png" alt=""><span>22 °C</span></div>
+                <!-- Bottoni -->
+                <div class="item" id="lampadine"><img src="img/lampadina.png" alt="">
+                    <input type="checkbox" class="checkboxInput spegnibile" id="check1" checked="true">
+                    <label for="check1" class="toggleSwitch"></label>
                 </div>
-                <div class="item" id="porte"><img src="../img/lucchetto.png" alt="">
-                    <input type="checkbox" id="checkboxInput2" checked>
-                    <label for="checkboxInput2" class="toggleSwitch"></label>
-                </div>
-                <div class="item" id="riscaldamento"><img src="../img/termosifone.png" alt="">
-                    <input type="checkbox" id="checkboxInput3" >
-                    <label for="checkboxInput3" class="toggleSwitch"></label>
-                </div>
-                <div class="item" id="irrigazione">
-                    <img src="../img/irrigazione.png" alt="">
-                    <input type="checkbox" id="checkboxInput4" checked>
-                    <label for="checkboxInput4" class="toggleSwitch"></label>
+                <div class="item" id="porte"><img src="img/lucchetto.png" alt="">
+                    <input type="checkbox" class="checkboxInput" id="check2" checked="true">
+                    <label for="check2" class="toggleSwitch"></label>
                 </div>
                 <div class="item" id="tapparelle">
-                    <img src="../img/tapparelle.png" alt="">
-                    <input type="checkbox" id="checkboxInput5">
-                    <label for="checkboxInput5" class="toggleSwitch"></label>
+                    <img src="img/tapparelle.png" alt="">
+                    <input type="checkbox" class="checkboxInput" id="check5">
+                    <label for="check5" class="toggleSwitch"></label>
                 </div>
-                <div class="item" id="ventilazione">
-                    <img src="../img/condizionatore.png" alt="">
-                    <input type="checkbox" id="checkboxInput6" >
-                    <label for="checkboxInput6" class="toggleSwitch"></label>
-                </div>
-                <div class="item" id="">asd</div>
-                <div class="item" id="">asd</div>
                 <a href="../index.html" class="button item" id="btn">
                     <span>Ritorna alla Casa</span>
                 </a>
             </div>
         </div>
-    </main>
+    </div class="main">
     
     <map name="house">
         <area class="shape" id="Camera" title="Camera Matrimoniale" href="matrimoniale.html" coords="52,48,171,183" shape="rect">

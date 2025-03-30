@@ -55,7 +55,7 @@ html {
     --bg-item: var(--bg-body);
     --bg-item-hover: #555;
 
-    --bg-btn: var(--bg-titolo);
+    --bg-btn: var(--bg-item);
     --color-btn: #fff;
     --bg-btn-reverse: #000;
     --color-btn-reverse: #fff;
@@ -76,13 +76,12 @@ body {
 
 
 /* HEADER */
-header {
+.header {
     background-color: var(--bg-titolo);
     color: var(--color-titolo);
     height: 17dvh;
     min-height: 100px;
     box-sizing: border-box;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +97,7 @@ hr {
 }
 
 /* DIV CASA E CARTA PER PARAMETRI */
-main {
+.main {
     height: fit-content;
     min-height: 83dvh;
     display: grid;
@@ -143,13 +142,17 @@ img#casa-img {
 .items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
     justify-items: center;
     align-items: center;
-    height: 80%;
+    height: fit-content;
+    min-height: 80%;
+
     gap: 2%;
 }
 .item {
     display: flex;
+    gap: 10px;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
@@ -163,6 +166,7 @@ img#casa-img {
     padding: 10px;
     box-sizing: border-box;
     transition: ease-in-out 0.3s;
+    overflow: hidden;
 }
 .item img {
     width: 50px;
@@ -171,7 +175,7 @@ img#casa-img {
 .item:hover {
     background-color: var(--bg-item-hover);
 }
-#ora {
+#ora_tempo_vento {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
@@ -194,6 +198,8 @@ img#casa-img {
     margin-top: 15px;
     transition: ease-out 0.3s;
     box-sizing: border-box;
+    position: relative;
+    top: 200%;
 }
 #btn:hover {
     background-color: var(--bg-btn-reverse);
@@ -217,8 +223,16 @@ img#casa-img {
         grid-template-rows: repeat(7, 1fr);
         grid-auto-flow: column;
     }
+    #temperatura {
+        grid-area: 3 / 2;
+    }
+    #porte {
+        grid-area: 4 / 2;
+    }
+    #btn {
+        top: 100%;
+    }
     .parameters {
-        padding-right: 0;
         min-height: 700px;
     }
     div.img-casa {
@@ -226,8 +240,8 @@ img#casa-img {
     }
 }
 @media screen and (max-width: 1050px) { /* Tablets */
-    main {
-        grid-template-columns: 1fr;
+    .main {
+        grid-template-columns: 1fr !important;
         gap: 60px;
     }
     .parameters {
@@ -243,6 +257,9 @@ img#casa-img {
     }
 }
 @media screen and (max-width: 690px) {
+    .switch1 {
+        left: calc(-55% - 4em) !important;
+    }
     div.img-casa {
         transform: scale(0.7);
     }
@@ -251,16 +268,16 @@ img#casa-img {
     }
 }
 @media screen and (max-width: 500px) {
+    .switch1 {
+        left: calc(-62% - 4em) !important;
+    }
     div.img-casa {
-        top: -70px;
         transform: scale(0.6);
     }
     .parameters {
-        transform: translateY(-80px);
         max-width: 300px;
     }
-    main {
-        max-height: 1270px;
+    .main {
         gap: 0;
     }
     .items {
@@ -268,6 +285,7 @@ img#casa-img {
     }
     .item {
         min-height: 91px;
+        max-width: 104px;
     }
 }
 @media screen and (max-width: 400px) {
@@ -284,6 +302,6 @@ img#casa-img {
         row-gap: 15px;
     }
     .item {
-        min-height: 100px;
+        min-height: 110px;
     }
 }
