@@ -129,8 +129,7 @@ function spegniLuci() {
                 luci_accese[j] = luci[i];
             }
         }
-        if (nomePag != "" && nomePag != "index" && nomePag != "matrimoniale") {
-            alert(nomePag)
+        if (nomePag != "/casa-domotica/" && nomePag != "index" && nomePag != "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
         } else if (nomePag == "matrimoniale") {
             luci[0].src = "img/lamp-spenta.png";
@@ -146,12 +145,13 @@ function spegniLuci() {
         for (let i=0; i < luci_accese.length; i++) {
             luci_accese[i].src = "img/lampadina.png";
         }
-        cambio_consumo = true;
-        consumo += 0.1;
+        if (nomePag == "/casa-domotica/" || nomePag == "index") {
+            cambio_consumo = true;
+            consumo += 0.1;
+        }
     }
 }
 btn_spegni.addEventListener("click", spegniLuci);
-
 
 // Bottone del termosifone
 let btn_termosifone = document.getElementById("check3").nextElementSibling;
