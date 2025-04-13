@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Progetto Casa Domotica" company="Domitix" webLink="https://xbabriele.github.io/casa-domotica" view-date="2025-03-23" view-index="0" gantt-divider-location="416" resource-divider-location="300" version="3.3.3316" locale="it_IT">
+    <description><![CDATA[Questo progetto è una simulazione di una casa domotica, con relativa interfaccia grafica e rete della casa.]]></description>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nome" width="237" order="0"/>
+        <field id="tpd4" name="Data d'inizio" width="89" order="1"/>
+        <field id="tpd5" name="Data di fine" width="89" order="2"/>
+        <field id="tpd15" name="Note" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#ffff33 #ff9933 #33ffff #66ff66 #ff3333 #000000 #f4f4f4 #ff0033]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nome" width="210" order="0"/>
+        <field id="1" name="Ruolo predefinito" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="nessuno">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="2025" month="4" date="1" type="HOLIDAY"/>
+        <date year="2025" month="4" date="2" type="HOLIDAY"/>
+        <date year="2025" month="4" date="3" type="HOLIDAY"/>
+        <date year="2025" month="4" date="4" type="HOLIDAY"/>
+        <date year="2025" month="4" date="5" type="HOLIDAY"/>
+        <date year="2025" month="4" date="6" type="HOLIDAY"/>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="9" uid="ed8c321d35584e97a7d9544cba42bd63" name="Assegnazione progetto interfaccia grafica" meeting="false" start="2025-03-25" duration="6" complete="2" thirdDate="2025-03-24" thirdDate-constraint="1" expand="true">
+            <task id="0" uid="8002a9783d6645e8a83571c9acad391a" name="Ideazione dell'interfaccia grafica" color="#ff9933" meeting="false" start="2025-03-25" duration="2" complete="1" priority="2" expand="true">
+                <notes><![CDATA[Progettazione del layout dell’interfaccia grafica, tenendo conto delle linee guida di usabilità e dell’esperienza utente (UX). Il layout definirà la struttura visiva delle pagine principali, inclusi i posizionamenti di elementi come il controllo dei parametri (es. temperatura, velocità del vento, luci), la navigazione tra le stanze e la gestione dei dispositivi. Il design sarà responsivo, garantendo una visualizzazione ottimale su diversi dispositivi (desktop, tablet, smartphone), con particolare attenzione alla facilità di interazione su schermi touch. Sarà inoltre definita la gerarchia visiva degli elementi, per migliorare la fruibilità e la comprensione dell’interfaccia da parte degli utenti.]]></notes>
+            </task>
+            <task id="1" uid="7f30d567918e48359af65a1ccc5b5cdd" name="Creazione wire frames" color="#33ffff" meeting="false" start="2025-03-26" duration="1" complete="1" priority="0" expand="true"/>
+            <task id="6" uid="be81d1e68be04a56a3ce41b367665156" name="Ricerca di immagini e/o media da utilizzare" color="#ff9933" meeting="false" start="2025-03-26" duration="1" complete="2" priority="2" expand="true">
+                <notes><![CDATA[Ricerca di immagini da usare nelle pagine dell'interfaccia web, come ad esempio: la casa vista dall’alto, immagini che rappresentano i vari parametri e icone per i pulsanti. Le immagini devono essere facili da capire e abbastanza grandi da essere ben visibili anche su dispositivi mobili.]]></notes>
+                <depend id="2" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="2" uid="adc17a84c0f0491785ae75c1981f9669" name="Creazione home" color="#ff3333" meeting="false" start="2025-03-27" duration="2" complete="4" priority="4" expand="true">
+                <notes><![CDATA[Sviluppo della pagina Home, in cui verrà visualizzata una rappresentazione completa dell’abitazione. All'interno di questa pagina sarà possibile monitorare e gestire in tempo reale tutti i parametri domotici.
+I parametri configurabili includeranno: temperatura interna, velocità del vento, condizioni meteo esterne, stato del termosifone, del condizionatore, del robot aspirapolvere (Roomba), del sistema di irrigazione automatica, delle luci, della porta d’ingresso, delle tapparelle e del consumo energetico istantaneo (wattaggio).
+Sarà inoltre integrato un pulsante per lo spegnimento generale dell’abitazione, che consentirà di disattivare tutti i dispositivi attivi e, se necessario, riattivarli successivamente.]]></notes>
+                <depend id="3" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="3" uid="a64b3fec5d9745299908eb8f333abc40" name="Creazione pagine delle stanze" color="#ff9933" meeting="false" start="2025-03-29" duration="1" complete="3" priority="2" expand="true">
+                <notes><![CDATA[Creazione di pagine dedicate per ciascuna stanza della casa, accessibili tramite la mappa interattiva presente nell'immagine della piantina. Attraverso la mappa, l’utente potrà selezionare una stanza ed accedervi per visualizzarne i dettagli in modo individuale.]]></notes>
+                <depend id="5" type="2" difference="0" hardness="Strong"/>
+                <depend id="7" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="7" uid="5b58222b8212443ca6931d92bd3957f2" name="Compatibilità per altri dispositivi" color="#ff9933" meeting="false" start="2025-03-30" duration="1" complete="0" priority="2" expand="true">
+                <notes><![CDATA[Ottimizzazione della compatibilità di tutte le pagine dell’interfaccia per diversi dispositivi, come tablet, smartphone e altri schermi di dimensioni variabili. Verranno effettuati test per verificare la corretta visualizzazione e la fluidità dell’esperienza utente su ciascun dispositivo.]]></notes>
+            </task>
+            <task id="5" uid="8e2e560fcb2a41b2815e13ee7766e123" name="Parte back end dell'interfaccia" color="#ff9933" meeting="false" start="2025-03-30" duration="1" complete="4" priority="2" expand="true">
+                <notes><![CDATA[Implementazione dei pulsanti funzionali e dei collegamenti tra le diverse pagine dell’interfaccia utente, con l’obiettivo di garantire un'esperienza di navigazione fluida e intuitiva. I pulsanti avranno diverse finalità: alcuni permetteranno la navigazione tra le sezioni (come le stanze o la pagina principale), mentre altri consentiranno l’interazione diretta con i dispositivi smart della casa, come l’accensione o lo spegnimento di luci, termosifoni, condizionatori, tapparelle e altri elementi.
+
+Ogni pulsante sarà dotato di un'icona rappresentativa che ne faciliti il riconoscimento visivo, accompagnata da un'etichetta descrittiva visibile al passaggio del mouse (tooltip), per garantire la massima comprensione da parte dell’utente.
+
+L’interfaccia sarà progettata secondo i principi di usabilità e accessibilità, con elementi ben visibili e ottimizzati per l’interazione su dispositivi mobili e desktop. Saranno inoltre condotti test funzionali per verificare il corretto comportamento dei pulsanti e dei collegamenti su diverse risoluzioni e tipologie di schermo.]]></notes>
+            </task>
+            <task id="8" uid="0d58f80e93ae4b0d80f80fedc35c5ba5" name="Consegna interfaccia grafica" color="#000000" meeting="true" start="2025-03-31" duration="0" complete="0" priority="4" webLink="https%3A%2F%2Fxbabriele.github.io%2Fcasa-domotica" expand="true"/>
+        </task>
+        <task id="10" uid="28cc19949ffd4b03bbfc394f5bdc2600" name="Assegnazione progetto della rete" meeting="false" start="2025-04-08" duration="7" complete="2" thirdDate="2025-04-07" thirdDate-constraint="1" expand="true">
+            <notes><![CDATA[Assegnazione del progetto per la progettazione e la simulazione della rete della casa domotica utilizzando Cisco Packet Tracer. L’obiettivo è creare una rete sicura e funzionale che colleghi tutti i dispositivi intelligenti della casa, garantendo una comunicazione efficace tra i vari elementi come sensori, attuatori e sistemi di controllo. Verrà utilizzato Cisco Packet Tracer per modellare la rete, configurare i dispositivi di rete e testare il flusso di dati, assicurando che la rete sia stabile e ottimizzata per l’interazione dei dispositivi domotici.]]></notes>
+            <task id="11" uid="cf09de9f204745a6a2c7fc2e0234574d" name="Ideazione della rete della casa" color="#ff9933" meeting="false" start="2025-04-08" duration="1" complete="3" priority="2" expand="true">
+                <notes><![CDATA[Pianificazione della rete domotica, con l’obiettivo di progettare un'infrastruttura di comunicazione sicura, scalabile ed efficiente per tutti i dispositivi intelligenti presenti nella casa. La pianificazione include la selezione dei componenti necessari, come router, switch, dispositivi IoT (sensori, luci, termostati, telecamere, ecc.), e la definizione della topologia di rete, che stabilisce come i dispositivi saranno interconnessi tra loro.
+
+Si considereranno sia connessioni cablate che wireless, ottimizzando la copertura e garantendo la stabilità della comunicazione in tutte le aree della casa. Verranno definiti gli indirizzi IP da utilizzare per i dispositivi, la configurazione delle reti locali (LAN) e la gestione del traffico per evitare congestioni.]]></notes>
+            </task>
+            <task id="12" uid="4da54b16638644519611d33fc578c819" name="Ricerca dei componenti della rete" color="#ffff33" meeting="false" start="2025-04-08" duration="1" complete="2" priority="2" expand="true">
+                <notes><![CDATA[Ricerca e selezione dei componenti necessari per la rete della casa domotica, includendo dispositivi come luci intelligenti, porte automatizzate, router, switch, computer, sensori ambientali, attuatori e altri dispositivi IoT (Internet of Things). Ogni componente verrà scelto in base alla compatibilità con la rete e le funzionalità richieste, assicurando un'integrazione ottimale e la gestione centralizzata dei vari dispositivi.]]></notes>
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="13" uid="effa075e67f644a8977393f77e5ecbd2" name="Realizzazione della rete" color="#33ffff" meeting="false" start="2025-04-09" duration="1" complete="1" priority="0" expand="true">
+                <notes><![CDATA[Posizionamento dei componenti della rete domotica in base alla piantina della casa, assicurando che ogni dispositivo sia collocato nel luogo più appropriato per ottimizzare la copertura, la funzionalità e l’efficienza del sistema. I dispositivi come luci, porte automatizzate, sensori e attuatori saranno disposti tenendo conto della distribuzione delle stanze, dei AP (Access Point) e delle esigenze di connettività. Ogni componente verrà posizionato in modo strategico per garantire una corretta interazione tra i dispositivi e una gestione centralizzata senza interferenze.]]></notes>
+                <depend id="14" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="14" uid="aec63a071f07490e929da47b4e492b18" name="Collegamento dei componenti della rete" color="#33ffff" meeting="false" start="2025-04-10" duration="1" complete="2" priority="0" expand="true">
+                <notes><![CDATA[Collegamento dei componenti della rete domotica tramite connessioni specifiche e ottimizzate, garantendo una comunicazione efficiente e senza interruzioni tra tutti i dispositivi. I collegamenti tra luci, porte, sensori, attuatori, router e switch saranno progettati tenendo conto della topologia della rete e delle necessità di traffico dati, utilizzando cavi e protocolli adeguati per ogni tipo di dispositivo. Verrà assicurata la affidabilità e velocità nella trasmissione delle informazioni, con particolare attenzione alla gestione della sicurezza.]]></notes>
+                <depend id="15" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="15" uid="ddd374307d634102a5dc8626b8b9f2c8" name="Configurazione dei componenti" color="#ff9933" meeting="false" start="2025-04-11" duration="2" complete="4" priority="2" expand="true">
+                <notes><![CDATA[Configurazione dei componenti della rete, inclusi router, switch e computer, per garantire una connessione stabile e funzionale all'interno della casa domotica. Verranno effettuate le impostazioni necessarie per ogni dispositivo al fine di assicurare una corretta comunicazione tra i vari dispositivi della rete. La rete sarà progettata per includere sia una parte cablata che una parte wireless, ottimizzando la copertura e le prestazioni in tutte le aree della casa. La messa a punto della rete include il controllo del corretto funzionamento dei collegamenti, la gestione della banda disponibile e la configurazione della sicurezza, per proteggere la rete da accessi non autorizzati e garantire la stabilità delle connessioni.]]></notes>
+                <depend id="16" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="16" uid="ea50c9c92bae40e5a2d937b366235788" name="Verificare il funzionamento" color="#ffff33" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2025-04-13" duration="1" complete="1" expand="true">
+                <notes><![CDATA[Verifica del corretto funzionamento della rete mediante test e prove pratiche, al fine di assicurarsi che tutti i dispositivi siano correttamente collegati e comunichino tra loro senza problemi. Verranno eseguiti controlli approfonditi per testare la connettività tra router, switch, computer e dispositivi IoT, verificando la stabilità delle connessioni cablate e wireless. I test includeranno la verifica della latenza, della velocità di trasmissione dei dati e dell'affidabilità dei collegamenti. Eventuali problematiche emerse durante i test saranno risolte per ottimizzare il funzionamento della rete e garantire che tutti i dispositivi operino in modo fluido e sicuro.]]></notes>
+            </task>
+            <task id="17" uid="86d4e1cfa9824a0383f75e72d843f5ce" name="Consegna rete della casa" meeting="true" start="2025-04-15" duration="0" complete="0" priority="4" expand="true"/>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="0" name="Gabriel Madiotto" function="Default:1" contacts="gabriel.madiotto@istitutovolterra.edu.it" phone=""/>
+        <resource id="1" name="Raul Andrei Cociug" function="Default:1" contacts="raulandrei.cociug@istitutovolterra.edu.it" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="0" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="1" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="2" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="5" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="11" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="13" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="14" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="16" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="0" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="7" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="11" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="12" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="15" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="16" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="2" resource-id="1" function="Default:1" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name=""/>
+    </roles>
+</project>
