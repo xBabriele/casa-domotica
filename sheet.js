@@ -182,22 +182,27 @@ btn_condizionatore.addEventListener("click", () => {
         consumo -= 0.15;
     }
 });
-setInterval(() => {
-    if (btn_termosifone.previousElementSibling.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
-        temperatura++;
+
+if (btn_termosifone.previousElementSibling.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
+    setInterval(() => {
         if (temperatura >= 26) {
             btn_termosifone.previousElementSibling.checked = false;
             consumo -= 0.4;
+        } else {
+            temperatura++;
         }
-    }
-    if (btn_condizionatore.previousElementSibling.checked) {    // Diminuisce la temperatura di un grado oghni 8 secondi fino ad arrivare a 14 gradi
-        temperatura--;
+    }, 8000);
+}
+if (btn_condizionatore.previousElementSibling.checked) {    // Diminuisce la temperatura di un grado oghni 8 secondi fino ad arrivare a 14 gradi
+    setInterval(() => {
         if (temperatura <= 14) {
             btn_condizionatore.previousElementSibling.checked = false;
             consumo -= 0.15;
+        } else {
+            temperatura--;
         }
-    }
-}, 8000);
+    }, 8000);
+}
 
 
 let btn_roomba = document.getElementById("check7").nextElementSibling;
@@ -243,13 +248,15 @@ spegni.addEventListener("click", () => {
         }
     } else {    // Riattiva i bottoni che erano accesi
         for (let x of btn_accesi) {
-            if (!x.checked) {       // Se il bottone messo all'interno dell'array si è riacceso prima di cliccare questo bottone un'altra volta
+            if (!x.checked) {       // Se il bottone messo all'interno dell'array non si è riacceso prima di cliccare questo bottone un'altra volta
                 switch (x.parentNode.id) {
                     case "lampadine":
                         spegniLuci();
                         break;
                     case "riscaldamento":
-                        consumo += 0.4;
+                        if (!document.getElementById("check6").checked)
+                            consumo += 0.4;
+                        
                         break;
                     case "condizionatore":
                         consumo += 0.15;
