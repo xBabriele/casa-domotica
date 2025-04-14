@@ -1,0 +1,213 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage[colorlinks=true,
+            linkcolor=black,
+            citecolor=black,
+            urlcolor=blue]{hyperref}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{DomotiX}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[C]{\thepage}
+
+\title{Casa Domotica}
+\author{Team di Sviluppo}
+\date{}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    {\large\itshape Team di Sviluppo:\par}
+    \vspace{0.2cm}
+    
+    Cociug Raul Andrei - Sviluppatore 
+    Madiotto Gabriel - Sviluppatore
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    {\Large Azienda: DomotiX\par}
+    \end{minipage}
+    
+    \centering
+    \vspace*{5cm}
+    
+    {\Huge\bfseries Casa Domotica\par}
+    \vspace{1.5cm}
+    
+    \vfill
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllc@{}}
+    \toprule
+    Versione & Data & Autore & Docenti \\
+    \midrule
+    1.0 & 31/03/2025 & DomotiX & Tollot, Rossi \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    
+    \thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{fancy}
+\newpage
+
+\section{Introduzione}
+\subsection{Descrizione Generale del Progetto}
+L'obiettivo del progetto è quello di sviluppare un sistema che permetta il controllo e il monitoraggio di vari dispositivi domestici attraverso un'interfaccia utente interattiva.
+Il progetto si compone di due principali elementi:\begin{itemize}
+    \item \textbf{La rete della casa domotica}, realizzata mediante il software Cisco Packet Tracer, per simulare la comunicazione tra i vari dispositivi connessi.
+    \item \textbf{L'interfaccia utente}, sviluppata con HTML, CSS e JavaScript, per consentire l'interazione con i dispositivi attraverso un mockup funzionale.\end{itemize}
+
+\subsection{Informazioni Progetto}
+\begin{itemize}
+    \item \textbf{Data Inizio Progetto:} 11 Marzo 2025
+    \item \textbf{Data Fine Prevista:} 14 Maggio 2025
+    \item \textbf{Durata Stimata:} 65 giorni/ 9 settimane
+    \item \textbf{Partecipanti:}
+    \begin{itemize}
+        \item Cociug Raul
+        \item Madiotto Gabriel
+    \end{itemize}
+\end{itemize}
+
+\section{Situazione Attuale}
+\subsection{Stato Corrente}
+È stato sviluppato il mockup con HTML, CSS, JavaScript per mostrare l'anteprima dell'interfaccia utente che dovrà essere utilizzata dagli utenti per poter interagire con la casa domotica e i dispositivi connessi ad essa.
+È stato realizzato un pannello di controllo, per la casa e tutte le stanze, con il quale è possibile svolgere numerose funzioni come:\begin{itemize}
+\item Accendere/spegnere le luci
+\item Visualizzazione della temperatura
+\item Visualizzazione della velocità del vento
+\item Verifica dello stato delle porte (aperte/chiuse)
+\end{itemize}
+È stato realizzato anche il questionario da dover porre ai clienti per l'analisi dei requisiti e delle funzionalità da implementare per personalizzare il prodotto come richiesto dal cliente.
+
+Per supportare l’organizzazione e la pianificazione del progetto, è stato realizzato un grafico di Gantt che rappresenta graficamente e temporalmente le attività principali, suddivise tra lo sviluppo dell’interfaccia grafica e la progettazione della rete domotica. Il grafico ha permesso di gestire efficacemente le fasi del progetto, evidenziando il progresso, la durata e le dipendenze tra le attività.
+
+È stata inoltre sviluppata la rete della casa domotica utilizzando il software di simulazione Cisco Packet Tracer. La rete è stata progettata per garantire la comunicazione tra tutti i dispositivi intelligenti distribuiti nelle diverse stanze della casa. Sono stati inseriti componenti come router, switch, access point, dispositivi IoT e computer, configurati per operare sia in modalità cablata che wireless. La rete è stata successivamente testata e verificata attraverso simulazioni per accertarne il corretto funzionamento e la stabilità delle comunicazioni tra i dispositivi.
+
+\subsection{Materiale Esistente}
+\begin{itemize}
+\item \textbf{Mockup/Interfaccia utente}
+\item \textbf{Rete Domotica}
+\item \textbf{Questionario}
+\item \textbf{Documentazione del progetto}
+\item \textbf{Grafico di Gantt}
+\end{itemize}
+
+\section{Requisiti Hardware e Software}
+\subsection{Requisiti non funzionali}
+\begin{itemize}
+    \item \textbf{Requisiti Hardware:}
+    \begin{itemize}
+        \item Dispositivi per l'utilizzo dell'interfaccia come smartphone, tablet o computer (fisso o portatile)
+        \item Connessione wifi/a internet
+    \end{itemize}
+    
+    \item \textbf{Requisiti Software:}
+    \begin{itemize}
+        \item Applicativi per l'utilizzo dell'interfaccia/IDE (es. VS Code)
+        \item Cisco Packet Tracer per utilizzo della rete
+    \end{itemize}
+\end{itemize}
+
+\section{Requisiti Funzionali}
+\subsection{Richieste Cliente HMI}
+Il cliente ha richiesto un'interfaccia semplice, intuitiva e facilmente utilizzabile per controllare i dispositivi della casa domotica e interagire con il sistema realizzato.
+
+\subsection{Specifiche Funzionali}
+Il sistema deve soddisfare requisiti come:\begin{itemize}
+    \item Visualizzazione meteo, velocità del vento e tempo
+    \item Rilevazione energia totale utilizzata e temperatura all'interno della casa domotica
+    \item Gestione porte con lucchetto da remoto (aprire/chiudere)
+    \item Controllo e gestione delle lampadine (accendere/spegnere)
+    \item Irrigazione delle piante
+    \item Controllo e gestione delle serrande (alzare/abbassare)
+    \item Accensione e spegnimento delle serrande
+    \item Accensione e spegnimento dell'aria condizionata
+    \item Gestione dell'aspirapolvere automatico (Roomba)
+    \item Gestione del riscaldamento in casa (termosifoni)
+\end{itemize}
+
+\subsection{Progettazione Interfaccia Grafica (GUI)}
+\begin{itemize}
+    \item \textbf{Il Layout}, formato da un header con l'opzione di modalità notturna, la casa domotica sulla sinistra e il pannello di controllo con tutte le funzionalità previste per il sistema.
+    La disposizione degli elementi è stata ottimizzata per schermi di diverse dimensioni, implementando un design responsive che si adatta automaticamente a tablet e dispositivi mobili.
+    \item \textbf{Elementi Grafici}, i quali sono stati selezionati e progettati per garantire coerenza visiva e migliorare la comunicazione con l'utente:\begin{itemize}
+        \item I colori, utilizzando un tema per il giorno, con tonalità azzurre su sfondo bianco, e un tema per la notte, con colori come grigio e nero.
+        \item Tipografia, sono stati utilizzati caratteri Arial per migliorare la leggibilità su tutti i dispositivi.
+        \item Iconografia, sono state utilizzate icone semplici da comprendere per gli utenti.
+        \item Componenti interattivi come pulsanti, campi di input e controlli sono stati progettati con stati visivi chiari (normale, hover, attivo, disabilitato) per comunicare efficacemente il loro stato all'utente.
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsection{Progettazione Rete}
+Il sistema domotico richiede una rete per la comunicazione tra i dispositivi. La progettazione della rete include:\begin{itemize}
+    \item Corretto posizionamento dei dispositivi di rete
+    \item Controllo e monitoraggio della rete per la rilevazione di eventuali malfunzionamenti
+\end{itemize}
+
+\section{Progettazione della Rete Domotica}
+
+\subsection{Pianificazione della Rete}
+La rete della casa domotica è stata progettata per garantire comunicazioni affidabili ed efficienti tra tutti i dispositivi intelligenti presenti all'interno dell'abitazione. Il progetto prevede una struttura mista, composta sia da collegamenti cablati che da connessioni wireless, con una divisione logica dei dispositivi per stanze. 
+
+\subsection{Componenti di Rete Selezionati}
+I dispositivi e componenti impiegati nella progettazione includono:
+\begin{itemize}
+    \item \textbf{Router} connesso a internet per la gestione del traffico in entrata/uscita dalla rete domestica
+    \item \textbf{Switch Layer 2}, per la distribuzione delle connessioni cablate tra le stanze
+    \item \textbf{Access Point Wi-Fi}, per garantire copertura wireless in tutta la casa
+    \item \textbf{Computer}, utilizzati nei due studi all'interno della casa
+    \item \textbf{Dispositivi IoT}: luci intelligenti, termostati, sensori ambientali, attuatori per porte e tapparelle, Roomba, irrigatori e altri componenti smart
+\end{itemize}
+
+\subsection{Distribuzione e Posizionamento}
+Ogni dispositivo è stato posizionato virtualmente sulla planimetria della casa in base alla sua funzione e posizione reale nella simulazione. La disposizione segue criteri di ottimizzazione della copertura, minimizzazione della latenza e riduzione del cablaggio dove possibile:
+\begin{itemize}
+    \item Switch e router collocati in posizioni centrali per ridurre la lunghezza dei cavi
+    \item Access point posizionati strategicamente per garantire segnale stabile in ogni ambiente
+    \item Dispositivi assegnati alle rispettive stanze (cucina, soggiorno, camere, bagni, ecc.) per facilitare l'organizzazione logica della rete
+\end{itemize}
+
+La rete è stata suddivisa logicamente per ottimizzare le prestazioni e rendere più semplice l’identificazione dei dispositivi in caso di interventi futuri.
+
+\subsection{Sicurezza e Configurazione}
+Sono stati configurati meccanismi di sicurezza di base per proteggere la rete e i dispositivi:
+\begin{itemize}
+    \item Password impostate su router, switch e access point per evitare accessi non autorizzati
+    \item Suddivisione della rete tra dispositivi utente e dispositivi di controllo per ridurre interferenze
+\end{itemize}
+
+\subsection{Simulazione e Test}
+La rete è stata realizzata e testata interamente utilizzando il software di simulazione Cisco Packet Tracer. Le simulazioni hanno incluso:
+\begin{itemize}
+    \item Test di connettività tra tutti i dispositivi, cablati e wireless
+    \item Verifica del funzionamento di ogni componente nella rete (es. risposta al ping, accesso da remoto)
+    \item Simulazione delle operazioni comuni come accensione/spegnimento dispositivi, apertura/chiusura porte, e gestione dei parametri ambientali
+\end{itemize}
+
+I test effettuati hanno confermato la stabilità e il corretto funzionamento della rete in tutti i casi previsti dallo scenario progettuale.
+
+\subsection{Considerazioni Finali}
+La rete progettata rispetta pienamente i requisiti funzionali previsti per il sistema domotico e presenta una struttura ottimizzata in termini di affidabilità, sicurezza e semplicità di gestione. La distinzione tra connessioni cablate e wireless consente di garantire elevate prestazioni nei punti critici dell’abitazione, assicurando al contempo la necessaria flessibilità operativa per i dispositivi mobili. Inoltre, l’architettura della rete è stata concepita per essere scalabile e facilmente estendibile, al fine di consentire l’integrazione di eventuali dispositivi o funzionalità aggiuntive in futuro, senza compromettere la stabilità e l’efficienza del sistema esistente.
+
+\end{document}
+
+basandoti su questo documento latex (tenendo la stessa formattazione e ricavando le informazione necessarie) crea un file nuovo in latex dove vada a spiegare la realizzazione dell'interfaccia grafica e la rete della casa domotica in questione come fatto nella sezione: \section{Progettazione della Rete Domotica} (copia quella sezione e aggiungi solo all'inizio la parte dell'interfaccia grafica) sentiti libero di chiedere eventuali domande sull'interfaccia
