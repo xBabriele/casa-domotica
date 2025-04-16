@@ -1,14 +1,5 @@
 "use strict"
 
-// Variabili di stato
-/*
-let consumo = prompt("Inserire il consumo di base della casa (con solo luci accese) (kW/h)", 1.5);      // consumo con solo luci accese
-let temperatura = prompt("Inserire la temperatura iniziale della casa", 20);
-
-let vento = prompt("Inserire la velocità del vento fuori dalla casa (km/h)", 10);
-
-let meteo = prompt("Inserire il tempo che c'è fuori dalla casa (es. Nuvoloso, Piovoso, Tempesta...)", "Soleggiato");
-*/
 let consumo;
 let temperatura;
 let meteo;
@@ -20,6 +11,42 @@ if (vento == null) vento = 10;
 
 let cambio_consumo = true;
 let cambio_temp = true;
+
+
+// Cookies (experimental)
+const cookieArray = document.cookie.split("; ");    // Faccio un'array dei cookie esistenti
+
+
+// Per creare cookie non manualmente
+function setCookie(name, value, days) { // days that the cookie will live
+    const date = new Date();
+    date.setTime(date.getTime() + days * 1000 * 60 * 60 * 24);  // date.getTime() -> data in millisecondi, days dovrà quindi essere moltiplicato per farlo diventare giorni in ms (un giorno = 86400000 ms)
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
+// Per eliminare un cookie specifico
+function deleteCookie(name) {
+    setCookie(name, null, null)
+}
+function deleteAllCookies() {
+    cookieArray.forEach(element => {
+        let nome = element.substring(0, element.indexOf('='));
+        console.log(nome);
+        setCookie(nome, null, null);
+    });
+}
+function getCookie(name) {
+    const cookieArray = document.cookie.split("; ");
+
+    let result = null;
+    cookieArray.forEach(element => {
+        if(element.indexOf(name) == 0) {
+            result = element.substring(name.length + 1);
+        }
+    });
+    return result;
+}
+
 
 let body = document.getElementsByTagName("body")[0];
 
