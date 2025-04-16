@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\begin{document}
+\begin{titlepage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    {\large\itshape Team di Sviluppo:\par}
+    \vspace{0.2cm}
+    
+    Cociug Raul Andrei - Sviluppatore 
+    Madiotto Gabriel - Sviluppatore
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    {\Large Azienda: DomotiX\par}
+    \end{minipage}
+    
+    \centering
+    \vspace*{5cm}
+    
+    {\Huge\bfseries Casa Domotica\par}
+    \vspace{1.5cm}
+    
+    \vfill
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllc@{}}
+    \toprule
+    Versione & Data & Autore & Docenti \\  
+    \midrule
+    1.0 & 15/04/2025 & DomotiX & Tollot, Rossi \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    
+    \thispagestyle{empty}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+\section{Progettazione della rete domotica}
+
+La progettazione della rete per il progetto di casa domotica è stata realizzata con l’obiettivo di garantire affidabilità, sicurezza, scalabilità e interoperabilità tra dispositivi eterogenei. La rete è stata simulata utilizzando \textbf{Cisco Packet Tracer}, mentre il pannello di controllo dell’ambiente domotico è stato realizzato separatamente con tecnologie web (HTML, CSS, JavaScript).
+
+\subsection{Componenti della rete}
+
+La rete è composta dai seguenti dispositivi fisici e virtuali:
+
+\begin{itemize}
+    \item \textbf{Router Cisco ISR4331}: cuore della rete, gestisce l’instradamento IPv4 e IPv6.
+    \item \textbf{Switch Cisco 2960}: consente la connessione dei dispositivi cablati all’interno della rete locale.
+    \item \textbf{Access Point Wireless}: fornisce connettività Wi-Fi a dispositivi mobili e IoT.
+    \item \textbf{Dispositivi di rete}: 2 PC, 2 laptop, 2 smartphone, 2 tablet, 1 TV, 10 luci intelligenti, 8 porte motorizzate, 1 monitor di temperatura, 1 wind detector (esterno), 1 sprinkler per irrigazione.
+\end{itemize}
+
+\subsection{Topologia e collegamenti}
+
+Il \textbf{router ISR4331} è connesso tramite l'interfaccia \texttt{GigabitEthernet0/0/0} allo \textbf{switch 2960}, che distribuisce la connessione ai dispositivi cablati (es. PC, laptop). L’\textbf{Access Point} è anch’esso collegato allo switch e fornisce connettività wireless ai dispositivi mobili e smart presenti nella rete.
+
+La disposizione prevede che i dispositivi più statici e a maggiore carico (PC, laptop) siano cablati, mentre gli elementi domotici e mobili (TV, tablet, smartphone, luci, porte, sensori) siano connessi tramite Wi-Fi.
+
+\subsection{Indirizzamento IP}
+
+È stato adottato un \textbf{schema di indirizzamento statico} per garantire il controllo completo della rete. Di seguito l’indirizzamento utilizzato:
+
+\begin{itemize}
+    \item \textbf{IPv4} (rete privata): \texttt{192.168.1.0/24}
+    \item \textbf{IPv6}: \texttt{fd00:abcd::/64}
+\end{itemize}
+
+\noindent Gli indirizzi sono stati assegnati come segue (esempi):
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Dispositivo} & \textbf{IPv4} & \textbf{IPv6} \\
+\hline
+Router (G0/0/0) & 192.168.1.1 & fd00:abcd::1 \\
+Switch 2960 & 192.168.1.2 & fd00:abcd::2 \\
+Access Point & 192.168.1.3 & fd00:abcd::3 \\
+PC1 & 192.168.1.10 & fd00:abcd::10 \\
+PC2 & 192.168.1.11 & fd00:abcd::11 \\
+Laptop1 & 192.168.1.12 & fd00:abcd::12 \\
+Laptop2 & 192.168.1.13 & fd00:abcd::13 \\
+Smartphone1 & 192.168.1.20 & fd00:abcd::20 \\
+Smartphone2 & 192.168.1.21 & fd00:abcd::21 \\
+Tablet1 & 192.168.1.22 & fd00:abcd::22 \\
+Tablet2 & 192.168.1.23 & fd00:abcd::23 \\
+TV & 192.168.1.30 & fd00:abcd::30 \\
+Luci (range) & 192.168.1.40–49 & fd00:abcd::40–49 \\
+Porte (range) & 192.168.1.50–57 & fd00:abcd::50–57 \\
+Monitor temperatura & 192.168.1.60 & fd00:abcd::60 \\
+Wind detector & 192.168.1.61 & fd00:abcd::61 \\
+Sprinkler & 192.168.1.62 & fd00:abcd::62 \\
+\hline
+\end{tabular}
+\caption{Indirizzamento IP dei dispositivi domotici}
+\end{table}
+
+\subsection{Configurazione Wireless}
+
+L’Access Point è stato configurato come segue:
+
+\begin{itemize}
+    \item \textbf{SSID}: DomoticHouse
+    \item \textbf{Standard}: IEEE 802.11n
+    \item \textbf{Canale}: 6 (2.4 GHz)
+\end{itemize}
+\subsection{Sicurezza e accesso al router}
+
+Per proteggere l’accesso al router Cisco ISR4331, sono state configurate le seguenti credenziali:
+
+\begin{itemize}
+    \item \textbf{Password modalità privilegiata}: \texttt{cisco123}
+    \item \textbf{Password console (accesso locale)}: \texttt{console123}
+    \item \textbf{Password accesso remoto (Telnet)}: \texttt{telnet123}
+\end{itemize}
+
+Queste password consentono di limitare l’accesso alle funzioni di configurazione avanzata del dispositivo, prevenendo modifiche non autorizzate.
+
+\subsection{Caratteristiche della rete}
+
+La rete è stata progettata secondo i seguenti principi:
+
+\begin{itemize}
+    \item \textbf{Sicurezza}: segmentazione logica tramite IP statici, controllo degli accessi.
+    \item \textbf{Affidabilità}: topologia centralizzata su switch; l’uso di IP statici garantisce prevedibilità.
+    \item \textbf{Scalabilità}: possibile espansione di dispositivi nella rete esistente con indirizzamento gestibile.
+    \item \textbf{Controllo e monitoraggio}: ogni dispositivo è monitorabile tramite l’interfaccia web.
+\end{itemize}
+
+\section*{Conclusioni}
+
+La progettazione e l’implementazione della rete per la casa domotica ha permesso di creare un’infrastruttura affidabile, sicura e scalabile, in grado di supportare una vasta gamma di dispositivi interconnessi tra loro. L’utilizzo di componenti professionali come il router Cisco ISR4331 e lo switch 2960 ha garantito stabilità nella gestione del traffico di rete e nella comunicazione tra dispositivi sia cablati che wireless.
+
+L’adozione di un sistema di indirizzamento statico ha favorito una configurazione precisa e prevedibile, migliorando il controllo e la manutenzione della rete. L’integrazione del protocollo IPv6, accanto a IPv4, consente di affrontare scenari futuri con maggiore flessibilità.
+
+La configurazione del modulo wireless, implementata con uno standard moderno e selezione di un canale specifico, ha assicurato un buon livello di stabilità nella comunicazione tra i dispositivi mobili e IoT. Inoltre, la rete è stata progettata per essere estendibile, facilitando l’aggiunta di nuovi nodi domotici senza impattare negativamente sulle performance esistenti.
+
+Nel complesso, l’architettura progettata ha soddisfatto gli obiettivi di progetto: garantire comunicazione tra i dispositivi, automatizzare scenari di utilizzo intelligenti e fornire all’utente un’interfaccia di monitoraggio e controllo tramite un’applicazione web intuitiva e sempre accessibile. Tale infrastruttura rappresenta un modello funzionale per l’implementazione di ambienti domotici moderni ed evolutivi.
+
+\end{document}
