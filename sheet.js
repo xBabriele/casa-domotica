@@ -4,36 +4,53 @@ let consumo;
 let temperatura;
 let meteo;
 let vento;
-if (consumo == null) consumo = 1.5;
-if (temperatura == null) temperatura = 20;
-if (meteo == null) meteo = "soleggiato";
-if (vento == null) vento = 10;
 
 let cambio_consumo = true;
 let cambio_temp = true;
 
 
 // Cookies (experimental)
+let divVars = document.getElementById("setVars");   // Div per impostare i parametri
+// Inputs
+let inConsumo = document.getElementById("in1");
+let inTemp = document.getElementById("in2");
+let inVento = document.getElementById("in3");
+let inMeteo = document.getElementById("in-meteo");
+
+let form = document.getElementById("form"); // Form per il submit dei parametri
+
+
 const cookieArray = document.cookie.split("; ");    // Faccio un'array dei cookie esistenti
+addEventListener("load", () => {
+    if (cookieArray.length != 4) {
+        divVars.removeAttribute("style");   // Se in memoria non abbiamo i 4 cookie che ci servono, mostriamo il form per impostarli
+    } else if (divVars != null) {   // Se non trova il div del form (perché si trova in una stanza, le quali non lo hanno) non fa nulla
+        divVars.setAttribute("style", "display: none;");
+    }
+});
+if(form != null) {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();     // Non fa ricaricare la pagina una volta fatto il submit
 
+        setCookie("Consumo", inConsumo.value, 1);
+        setCookie("Temperatura", inTemp.value, 1);
+        setCookie("Meteo", inMeteo.value, 1);
+        setCookie("Vento", inVento.value, 1);
 
+        consumo = getCookie("Consumo");
+        temperatura = getCookie("Temperatura");
+        meteo = getCookie("Meteo");
+        vento = getCookie("Vento");
+        
+        divVars.setAttribute("style", "display: none;");
+    });
+}
 // Per creare cookie non manualmente
 function setCookie(name, value, days) { // days that the cookie will live
     const date = new Date();
     date.setTime(date.getTime() + days * 1000 * 60 * 60 * 24);  // date.getTime() -> data in millisecondi, days dovrà quindi essere moltiplicato per farlo diventare giorni in ms (un giorno = 86400000 ms)
     let expires = "expires=" + date.toUTCString();
-    document.cookie = `${name}=${value}; ${expires}; path=/`;
-}
-// Per eliminare un cookie specifico
-function deleteCookie(name) {
-    setCookie(name, null, null)
-}
-function deleteAllCookies() {
-    cookieArray.forEach(element => {
-        let nome = element.substring(0, element.indexOf('='));
-        console.log(nome);
-        setCookie(nome, null, null);
-    });
+    document.cookie = `${name}=${value}; ${expires}; path=../`;
 }
 function getCookie(name) {
     const cookieArray = document.cookie.split("; ");
@@ -47,6 +64,17 @@ function getCookie(name) {
     return result;
 }
 
+// Per eliminare un cookie specifico
+function deleteCookie(name) {
+    setCookie(name, null, null)
+}
+function deleteAllCookies() {
+    cookieArray.forEach(element => {
+        let nome = element.substring(0, element.indexOf('='));
+        setCookie(nome, null, null);
+    });
+}
+console.log(cookieArray)
 
 let body = document.getElementsByTagName("body")[0];
 
@@ -73,11 +101,12 @@ let testo_consumo = document.getElementById("electricity").childNodes[1];   // s
 let testo_vento = document.getElementById("vento");  // span della velocità del vento
 let testo_meteo = document.getElementById("meteo");
 let event_load;
+// Quando si carica il sito
 addEventListener("load", function() {
     data = new Date();
 
     ore = data.getHours();
-
+    
     if (ore >= 6 && ore <= 18) {
         change_theme.checked = true;
         body.setAttribute("class", "theme-light");
@@ -94,6 +123,11 @@ addEventListener("load", function() {
     }).format(data);
 
     date.innerHTML = ora;
+
+    consumo = getCookie("Consumo");
+    temperatura = getCookie("Temperatura");
+    meteo = getCookie("Meteo");
+    vento = getCookie("Vento");
 
     testo_temp.innerHTML = temperatura + " °C";
     testo_consumo.innerHTML = Math.floor(consumo*100)/100 + " kW/h";
@@ -181,119 +215,123 @@ function spegniLuci() {
 btn_spegni.addEventListener("click", spegniLuci);
 
 // Bottone del termosifone
-let btn_termosifone = document.getElementById("check3").nextElementSibling;
-let btn_condizionatore = document.getElementById("check6").nextElementSibling;
-btn_termosifone.addEventListener("click", () => {
-    if (!btn_termosifone.previousElementSibling.checked) {      // quando attivo il termosifone, disattivo il condizionatore in automatico
-        if (btn_condizionatore.previousElementSibling.checked) {
-            btn_condizionatore.previousElementSibling.checked = false;
-            consumo -= 0.15;
-        }
-        cambio_temp=true;
-        cambio_consumo = true;
-        consumo += 0.4;
-    } else {
-        consumo -= 0.4;
-    }
-});
-btn_condizionatore.addEventListener("click", () => {
-    if (!btn_condizionatore.previousElementSibling.checked) {   // quando attivo il condizionatore, disattivo il termosifone in automatico
-        if (btn_termosifone.previousElementSibling.checked) {
-            btn_termosifone.previousElementSibling.checked = false;
+if(document.getElementById("check3") != null) {  // Se non trova nella pagina il bottone del termosifone (nelle stanze singole) non da errore
+    let btn_termosifone = document.getElementById("check3").nextElementSibling;
+    let btn_condizionatore = document.getElementById("check6").nextElementSibling;
+    btn_termosifone.addEventListener("click", () => {
+        if (!btn_termosifone.previousElementSibling.checked) {      // quando attivo il termosifone, disattivo il condizionatore in automatico
+            if (btn_condizionatore.previousElementSibling.checked) {
+                btn_condizionatore.previousElementSibling.checked = false;
+                consumo -= 0.15;
+            }
+            cambio_temp=true;
+            cambio_consumo = true;
+            consumo += 0.4;
+        } else {
             consumo -= 0.4;
         }
-        cambio_temp=true;
-        cambio_consumo = true;
-        consumo += 0.15;
-    } else {
-        consumo -= 0.15;
-    }
-});
-
-if (btn_termosifone.previousElementSibling.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
-    setInterval(() => {
-        if (temperatura >= 26) {
-            btn_termosifone.previousElementSibling.checked = false;
-            consumo -= 0.4;
+    });
+    btn_condizionatore.addEventListener("click", () => {
+        if (!btn_condizionatore.previousElementSibling.checked) {   // quando attivo il condizionatore, disattivo il termosifone in automatico
+            if (btn_termosifone.previousElementSibling.checked) {
+                btn_termosifone.previousElementSibling.checked = false;
+                consumo -= 0.4;
+            }
+            cambio_temp=true;
+            cambio_consumo = true;
+            consumo += 0.15;
         } else {
-            temperatura++;
-        }
-    }, 8000);
-}
-if (btn_condizionatore.previousElementSibling.checked) {    // Diminuisce la temperatura di un grado oghni 8 secondi fino ad arrivare a 14 gradi
-    setInterval(() => {
-        if (temperatura <= 14) {
-            btn_condizionatore.previousElementSibling.checked = false;
             consumo -= 0.15;
-        } else {
-            temperatura--;
         }
-    }, 8000);
-}
-
-
-let btn_roomba = document.getElementById("check7").nextElementSibling;
-btn_roomba.addEventListener("click", () => {
-    if (!btn_roomba.previousElementSibling.checked) {
-        consumo += 0.1;
-    } else {
-        consumo -= 0.1;
+    });
+    
+    if (btn_termosifone.previousElementSibling.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
+        setInterval(() => {
+            if (temperatura >= 26) {
+                btn_termosifone.previousElementSibling.checked = false;
+                consumo -= 0.4;
+            } else {
+                temperatura++;
+            }
+        }, 8000);
     }
-});
+    if (btn_condizionatore.previousElementSibling.checked) {    // Diminuisce la temperatura di un grado oghni 8 secondi fino ad arrivare a 14 gradi
+        setInterval(() => {
+            if (temperatura <= 14) {
+                btn_condizionatore.previousElementSibling.checked = false;
+                consumo -= 0.15;
+            } else {
+                temperatura--;
+            }
+        }, 8000);
+    }
+}
+if (document.getElementById("check7") != null) {
+    let btn_roomba = document.getElementById("check7").nextElementSibling;
+    btn_roomba.addEventListener("click", () => {
+        if (!btn_roomba.previousElementSibling.checked) {
+            consumo += 0.1;
+        } else {
+            consumo -= 0.1;
+        }
+    });
 
+}
 
 // Evento del bottone di spegnimento completo
 let spegni = document.querySelector(".switch");
 let btn_spegnibili = document.querySelectorAll(".spegnibile");
 let btn_accesi = new Array();   // Bottoni accesi prima di spegnerli tutti (così quando riaccendo (riclicco) i bottoni che erano accesi all'inizio saranno di nuovo accesi e quelli spenti rimarranno spenti)
-spegni.addEventListener("click", () => {
-    if (spegni.previousElementSibling.checked) {    // Se quando clicchiamo il bottone è acceso (e quindi vogliamo spegnere tutto)
-        btn_accesi = [];    // Ogni volta che voglio spegnere tutto mi resetta l'array
-        for (let i=0, j=0; i < btn_spegnibili.length; i++) {    // Cicla tra gli elementi spegnibili e mette quelli accesi
-            if (btn_spegnibili[i].checked) {
-                btn_accesi[j++] = btn_spegnibili[i];
-            }
-        }
-        for (let x of btn_spegnibili) {     // spegne i bottoni
-            if (x.checked) {
-                switch (x.parentNode.id) {
-                    case "lampadine":
-                        spegniLuci();
-                        break;
-                    case "riscaldamento":
-                        consumo -= 0.4;
-                        break;
-                    case "condizionatore":
-                        consumo -= 0.15;
-                        break;
-                    case "roomba":
-                        consumo -= 0.1;
-                        break;
+if (spegni != null) {
+    spegni.addEventListener("click", () => {
+        if (spegni.previousElementSibling.checked) {    // Se quando clicchiamo il bottone è acceso (e quindi vogliamo spegnere tutto)
+            btn_accesi = [];    // Ogni volta che voglio spegnere tutto mi resetta l'array
+            for (let i=0, j=0; i < btn_spegnibili.length; i++) {    // Cicla tra gli elementi spegnibili e mette quelli accesi
+                if (btn_spegnibili[i].checked) {
+                    btn_accesi[j++] = btn_spegnibili[i];
                 }
             }
-            x.checked = false;
-        }
-    } else {    // Riattiva i bottoni che erano accesi
-        for (let x of btn_accesi) {
-            if (!x.checked) {       // Se il bottone messo all'interno dell'array non si è riacceso prima di cliccare questo bottone un'altra volta
-                switch (x.parentNode.id) {
-                    case "lampadine":
-                        spegniLuci();
-                        break;
-                    case "riscaldamento":
-                        if (!document.getElementById("check6").checked)
-                            consumo += 0.4;
-                        
-                        break;
-                    case "condizionatore":
-                        consumo += 0.15;
-                        break;
-                    case "roomba":
-                        consumo += 0.1;
-                        break;
+            for (let x of btn_spegnibili) {     // spegne i bottoni
+                if (x.checked) {
+                    switch (x.parentNode.id) {
+                        case "lampadine":
+                            spegniLuci();
+                            break;
+                        case "riscaldamento":
+                            consumo -= 0.4;
+                            break;
+                        case "condizionatore":
+                            consumo -= 0.15;
+                            break;
+                        case "roomba":
+                            consumo -= 0.1;
+                            break;
+                    }
                 }
-                x.checked = true;
+                x.checked = false;
+            }
+        } else {    // Riattiva i bottoni che erano accesi
+            for (let x of btn_accesi) {
+                if (!x.checked) {       // Se il bottone messo all'interno dell'array non si è riacceso prima di cliccare questo bottone un'altra volta
+                    switch (x.parentNode.id) {
+                        case "lampadine":
+                            spegniLuci();
+                            break;
+                        case "riscaldamento":
+                            if (!document.getElementById("check6").checked)
+                                consumo += 0.4;
+                            
+                            break;
+                        case "condizionatore":
+                            consumo += 0.15;
+                            break;
+                        case "roomba":
+                            consumo += 0.1;
+                            break;
+                    }
+                    x.checked = true;
+                }
             }
         }
-    }
-});
+    });
+}

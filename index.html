@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <meta name="author" content="Cociug Raul, Gabriel Madiotto">
     <meta name="description" content="Progetto su una casa domotica, con interfaccia e la rete di quest'ultima. Questo progetto è l'insieme le conoscenze di Cisco Packet Tracer, HTML, CSS e JavaScript (con l'uilizzo anche di ThreeJS).">
     <meta name="keywords" content="HTML, CSS, JavaScript, ThreeJS, Cisco Packet Tracer, Casa Domotica">
@@ -17,6 +19,38 @@
 </head>
 
 <body class="theme-light">
+    <div id="setVars" style="display: none;">
+        <form id="form">
+            <h3>
+                Inserisci i parametri iniziali della casa
+            </h3>
+            <div class="params">
+                <p title="Metti un wattaggio tra 1 e 2,5 kW/h">
+                    <label for="in1">Consumo iniziale:</label>
+                    <input type="number" id="in1" placeholder="(1 - 2,5 kW/h) *" min="1" max="2.5" step="0.5" required>
+                </p>
+                <p title="Metti una temperatura tra i 14 e 26 gradi">
+                    <label for="in2">Temperatura:</label>
+                    <input type="number" id="in2" placeholder="(14 - 26 °C) *" min="14" max="26" required>
+                </p>
+                <p title="Metti la velocità del vento tra 0 e 20 km/h">
+                    <label for="in3">Velocità vento:</label>
+                    <input type="number" id="in3" placeholder="(0 - 20 km/h) *" min="0" max="20" step="0.5" required>
+                </p>
+                <p title="Scegli tra le opzioni">
+                    <label for="in-meteo">Meteo:</label>
+                    <select id="in-meteo" name="input-meteo">
+                        <option value="Soleggiato">Soleggiato</option>
+                        <option value="Nuvoloso">Nuvoloso</option>
+                        <option value="Piovoso">Piovoso</option>
+                        <option value="Tempesta">Tempesta</option>
+                    </select>
+                </p>
+            </div>
+            <button type="submit" class="button" id="submit"><span>Send</span></button>
+        </form>
+    </div>
+
     <div class="header">
         <h1>Casa Domotica<hr></h1>
         <label class="switch1" style="grid-area: 1 / 3;">
@@ -55,7 +89,7 @@
             <img src="img/lampadina.png" alt="" class="lamp" id="lamp-soggiorno">
             <img src="img/lampadina.png" alt="" class="lamp" id="lamp-cucina">
             
-            <img src="img/lampadina.png" alt="" id="setting">
+            <img src="img/lampadina.png" alt="" id="setting" title="Nascondi tutte le luci">
         </div>
 
         <div class="parameters">
