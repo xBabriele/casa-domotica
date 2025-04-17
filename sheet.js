@@ -30,8 +30,6 @@ addEventListener("load", () => {
 });
 if(form != null) {
     form.addEventListener("submit", (event) => {
-        event.preventDefault();     // Non fa ricaricare la pagina una volta fatto il submit
-
         setCookie("Consumo", inConsumo.value, 1);
         setCookie("Temperatura", inTemp.value, 1);
         setCookie("Meteo", inMeteo.value, 1);
