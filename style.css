@@ -74,6 +74,8 @@ body {
 }
 /* FINE BODY DINAMICO */
 
+
+/* INIZIO FORM */
 #setVars {
     position: fixed;
     width: 100vw;
@@ -138,6 +140,7 @@ body {
 #submit span {
     top: 1px;
 }
+/* FINE FORM */
 
 
 /* HEADER */
@@ -281,14 +284,10 @@ img#casa-img {
     user-select: none;
 }
 
-.clear {
-    clear: both;
-    position: relative;
-}
 
 
-
-@media screen and (max-width: 1400px) {
+/* MEDIA PER IL SITO DINAMICO (cambia a seconda della grandezza dello schermo) */
+@media screen and (max-width: 1400px) { /* Computers */
     .items {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(7, 1fr);
@@ -322,7 +321,7 @@ img#casa-img {
         transform: scale(0.9);
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {  /* Telefoni */
     div.img-casa {
         transform: scale(0.8);
     }
