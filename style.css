@@ -219,8 +219,6 @@ img#casa-img {
     grid-template-rows: repeat(6, 1fr);
     justify-items: center;
     align-items: center;
-    height: fit-content;
-    min-height: 80%;
 
     gap: 2%;
 }
@@ -255,7 +253,8 @@ img#casa-img {
     justify-items: center;
     align-items: center;
     width: 100%;
-    min-height: 180px;
+    height: fit-content;
+    min-height: 160px;
 
     grid-column: span 2;
     grid-row: span 2;
@@ -304,6 +303,8 @@ img#casa-img {
     }
     .parameters {
         min-height: 700px;
+        padding-right: 0;
+        padding-left: 2.5%;
     }
     div.img-casa {
         transform: scale(0.9);
@@ -354,7 +355,7 @@ img#casa-img {
         row-gap: 10px;
     }
     .item {
-        min-height: 91px;
+        min-height: 101px;
         max-width: 104px;
     }
 }
