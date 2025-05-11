@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\begin{document}
+\begin{titlepage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    {\large\itshape Team di Sviluppo:\par}
+    \vspace{0.2cm}
+    
+    Cociug Raul Andrei - Sviluppatore 
+    Madiotto Gabriel - Sviluppatore
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    {\Large Azienda: DomotiX\par}
+    \end{minipage}
+    
+    \centering
+    \vspace*{5cm}
+    
+    {\Huge\bfseries Casa Domotica\par}
+    \vspace{1.5cm}
+    
+    \vfill
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllc@{}}
+    \toprule
+    Versione & Data & Autore & Clienti \\  
+    \midrule
+    2.0 & 15/04/2025 & Cociug, Madiotto & Tollot, Rossi \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    
+    \thispagestyle{empty}
+\end{titlepage}
+\tableofcontents
+\newpage
+
+\section{Introduzione e Finalità del Manuale}
+
+Il presente manuale utente è stato realizzato per fornire una guida chiara e dettagliata all'utilizzo dell’interfaccia grafica del sistema di \textbf{casa domotica} progettato come simulazione interattiva. L’interfaccia, sviluppata con tecnologie web , consente di controllare e monitorare diversi dispositivi domestici come luci, porte, temperatura, meteo, irrigazione e altro, attraverso un pannello centralizzato e intuitivo.
+
+L’obiettivo di questo manuale è quello di accompagnare l’utente nell’utilizzo corretto delle funzionalità offerte, spiegando passo dopo passo l’interazione con ciascun elemento della GUI. Viene posta particolare attenzione alla semplicità e all’accessibilità, in modo da rendere il sistema utilizzabile anche da utenti con scarse conoscenze informatiche.
+
+Il manuale è destinato a:
+\begin{itemize}
+  \item Utenti finali che utilizzano la simulazione per testare le funzionalità domotiche;
+  \item Docenti e valutatori che necessitano di comprenderne l’uso;
+  \item Chiunque voglia esplorare un esempio pratico di interfaccia per sistemi domotici.
+\end{itemize}
+
+\section{Requisiti di Sistema}
+
+Per il corretto funzionamento dell’interfaccia grafica si consiglia l’uso dei seguenti strumenti:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Browser compatibile}: Google Chrome, Mozilla Firefox, Microsoft Edge;
+  \item \textbf{Dispositivi compatibili}: PC, laptop, tablet e smartphone;
+  \item \textbf{Risoluzione consigliata}: almeno 1280x720 pixel;
+  \item \textbf{Connessione di rete}: accesso alla rete locale simulata o reale.
+\end{itemize}
+
+\subsection*{2.1 Rete e Accesso al Sistema}
+
+Il prodotto finale consiste in un sistema domotico simulato che integra una \textbf{rete locale} (con dispositivi virtuali collegati) e un’\textbf{interfaccia grafica web} per il controllo dei dispositivi.
+
+Per accedere all’interfaccia e interagire con i dispositivi domotici, l’utente deve essere \textbf{connesso alla rete locale} predisposta per il progetto. La rete deve essere stata configurata precedentemente secondo le specifiche del sistema (indirizzamento IP statico, router, switch, access point, ecc.).
+
+\textbf{Nota}: la configurazione e la gestione della rete non fanno parte dei servizi offerti dal sistema. È responsabilità dell’utente disporre di un ambiente di rete compatibile e funzionante.
+
+\section{Panoramica dell’Interfaccia}
+
+L’interfaccia è organizzata in sezioni tematiche e offre una visione d’insieme intuitiva dell’abitazione:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Barra superiore}: mostra l’orario attuale e, se implementato, la modalità giorno/notte;
+  \item \textbf{Sezioni interattive}: pulsanti o icone cliccabili per controllare luci, porte, temperatura, irrigazione, posta e altro;
+  \item \textbf{Pannello meteo}: visualizza condizioni meteo aggiornate o simulate;
+  \item \textbf{Colori e icone}: ogni componente ha uno stato visivo (es. luce accesa = giallo, porta aperta = rosso).
+\end{itemize}
+
+\section{Funzionalità}
+
+\subsection*{Controllo Luci}
+Permette di accendere o spegnere le luci. Cliccare sull’icona della lampadina per alternarne lo stato.
+
+\subsection*{Stato Porte}
+Visualizza se una porta è aperta o chiusa. Cliccando sull’icona della porta è possibile simularne lo stato.
+
+\subsection*{Monitoraggio Temperatura}
+Mostra la temperatura interna ed esterna, fissa o simulata.
+
+\subsection*{Previsioni Meteo}
+Visualizza le condizioni meteo attuali o simulate (eventualmente tramite API).
+
+\subsection*{Sistema di Irrigazione}
+Permette di attivare o disattivare lo sprinkler esterno con un pulsante ON/OFF.
+
+\subsection*{Gestione Posta}
+Mostra se è presente nuova posta. L’icona cambia colore in base allo stato.
+
+\section{Guida Passo-Passo}
+
+\begin{enumerate}
+  \item Aprire il browser e accedere al file \texttt{index.html} o all’indirizzo locale configurato;
+  \item Utilizzare la barra di navigazione o le sezioni cliccabili;
+  \item Interagire con le icone per controllare ogni dispositivo;
+  \item Consultare i pannelli meteo, temperatura, orario e posta.
+\end{enumerate}
+
+\section{Suggerimenti e Buone Pratiche}
+
+\begin{itemize}[noitemsep]
+  \item Utilizzare browser aggiornati;
+  \item Non accedere da più dispositivi contemporaneamente;
+  \item Ricaricare la pagina per resettare lo stato iniziale;
+  \item Non modificare il codice se non si hanno competenze tecniche.
+\end{itemize}
+
+\section{Risoluzione dei Problemi}
+
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Problema} & \textbf{Causa possibile} & \textbf{Soluzione} \\
+\hline
+L’interfaccia non si carica & File HTML non trovato & Verificare percorso o server \\
+\hline
+Le luci non rispondono & Errore JavaScript & Controllare la console del browser \\
+\hline
+Il meteo non si aggiorna & Mancanza di connessione API & Usare dati simulati o verificare la rete \\
+\hline
+Icone mancanti & File immagini assenti & Controllare la cartella \texttt{/img/} \\
+\hline
+\end{tabular}
+
+\subsection{Contatti e Supporto}
+
+Per assistenza tecnica o richieste relative al progetto, rivolgersi allo sviluppatore o al docente di riferimento.
+
+
+\end{document}
