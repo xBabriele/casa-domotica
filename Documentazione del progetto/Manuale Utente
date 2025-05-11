@@ -73,7 +73,7 @@ Il manuale è destinato a:
 
 Per il corretto funzionamento dell’interfaccia grafica si consiglia l’uso dei seguenti strumenti:
 
-\begin{itemize}[noitemsep]
+\begin{itemize}
   \item \textbf{Browser compatibile}: Google Chrome, Mozilla Firefox, Microsoft Edge;
   \item \textbf{Dispositivi compatibili}: PC, laptop, tablet e smartphone;
   \item \textbf{Risoluzione consigliata}: almeno 1280x720 pixel;
@@ -88,11 +88,13 @@ Per accedere all’interfaccia e interagire con i dispositivi domotici, l’uten
 
 \textbf{Nota}: la configurazione e la gestione della rete non fanno parte dei servizi offerti dal sistema. È responsabilità dell’utente disporre di un ambiente di rete compatibile e funzionante.
 
+\hspace{20 mm}
+
 \section{Panoramica dell’Interfaccia}
 
 L’interfaccia è organizzata in sezioni tematiche e offre una visione d’insieme intuitiva dell’abitazione:
 
-\begin{itemize}[noitemsep]
+\begin{itemize}
   \item \textbf{Barra superiore}: mostra l’orario attuale e, se implementato, la modalità giorno/notte;
   \item \textbf{Sezioni interattive}: pulsanti o icone cliccabili per controllare luci, porte, temperatura, irrigazione, posta e altro;
   \item \textbf{Pannello meteo}: visualizza condizioni meteo aggiornate o simulate;
@@ -130,7 +132,7 @@ Mostra se è presente nuova posta. L’icona cambia colore in base allo stato.
 
 \section{Suggerimenti e Buone Pratiche}
 
-\begin{itemize}[noitemsep]
+\begin{itemize}
   \item Utilizzare browser aggiornati;
   \item Non accedere da più dispositivi contemporaneamente;
   \item Ricaricare la pagina per resettare lo stato iniziale;
@@ -155,7 +157,7 @@ Icone mancanti & File immagini assenti & Controllare la cartella \texttt{/img/} 
 
 \subsection{Contatti e Supporto}
 
-Per assistenza tecnica o richieste relative al progetto, rivolgersi allo sviluppatore o al docente di riferimento.
+Per assistenza tecnica o richieste relative al progetto, rivolgersi allo sviluppatore.
 
 
 \end{document}
