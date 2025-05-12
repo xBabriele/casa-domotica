@@ -1,0 +1,265 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{DomotiX - Documentazione Tecnica}
+\lhead{Team Sviluppo}
+\rfoot{\thepage}
+
+\lstset{
+  language=JavaScript,
+  backgroundcolor=\color{gray!10},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{orange},
+  breaklines=true,
+  showstringspaces=false,
+  frame=single
+}
+
+\begin{document}
+\begin{titlepage}
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedright
+    {\large\itshape Team di Sviluppo:\par}
+    \vspace{0.2cm}
+    
+    Cociug Raul Andrei - Sviluppatore \\
+    Madiotto Gabriel - Sviluppatore
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+    \raggedleft
+    {\Large Azienda: DomotiX\par}
+    \end{minipage}
+    
+    \centering
+    \vspace*{5cm}
+    
+    {\Huge\bfseries Documentazione Tecnica\par}
+    
+    \vfill
+    
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lllc@{}}
+    \toprule
+    Versione & Data & Autore & Clienti \\  
+    \midrule
+    1.0 & 12/05/2025 & Cociug, Madiotto & Tollot, Rossi \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+    
+    \thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+
+Il seguente documento fornisce una descrizione tecnica dettagliata dell'interfaccia grafica della casa domotica. L’interfaccia consente agli utenti di interagire con gli elementi di un’abitazione.
+
+\section{Premessa}
+
+La configurazione e la gestione della rete non fanno parte dei servizi offerti
+dal sistema. È responsabilità dell’utente disporre di un ambiente di rete compatibile e funzionante. Le eventuali manutenzioni o modifiche da apportare sono anch'esse al di fuori dei servizi offerti dall'azienda. Una volta consegnato il prodotto finito al cliente l'azienda non avrà più alcuna responsabilità sul progetto e il cliente dovrà riconoscere il diritto d'autore dell'azienda sul progetto.
+
+\section{Obiettivi del Progetto}
+
+\begin{itemize}
+  \item Disporre graficamente un ambiente domotico tramite interfaccia grafica web;
+  \item Permettere l'interazione dell'utente con i bottoni e la mappa della casa;
+  \item Realizzare un’interfaccia responsive, compatibile con diversi dispositivi;
+  \item Gestire lo stato dei dispositivi mediante codice JavaScript locale.
+\end{itemize}
+
+\section{Struttura del Progetto}
+
+\begin{itemize}
+  \item \texttt{index.html} – struttura principale della pagina;
+  \item \texttt{style.css} – gestione grafica e layout delle pagine;
+  \item \texttt{buttons.css} – gestione grafica e layout dei bottoni;
+  \item \texttt{img-casa.css} – gestione grafica e layout della mappa della casa;
+  \item \texttt{script.js} – logica, interazioni e simulazioni dinamiche;
+  \item \texttt{/img/} – directory contenente le immagini (icone, mappa, sfondi);
+  \item \texttt{/Stanze/} – directory contenente i file HTML delle stanze della casa.
+\end{itemize}
+
+\section{Architettura Tecnica}
+
+\subsection{Tecnologie Utilizzate}
+
+\begin{itemize}
+  \item \textbf{HTML5}: per la struttura semantica e visiva dell’interfaccia;
+  \item \textbf{CSS3}: per la formattazione, animazioni e supporto responsive;
+  \item \textbf{JavaScript Vanilla}: per la logica client-side e l’interazione DOM;
+  \item \textbf{Cookie API}: per la simulazione di stato persistente lato client.
+\end{itemize}
+
+\subsection{Componenti Principali}
+
+\begin{itemize}
+  \item \textbf{Mappa interattiva}: ogni stanza o area è cliccabile e mostra controlli dedicati;
+  \item \textbf{Moduli funzionali}: luci, porte, meteo, temperatura, Roomba, irrigazione, ora, velocità vento, wattaggio della casa, condizionatore, termosifoni, serrande;
+  \item \textbf{Pannello superiore}: titolo della stanza corrente, modalità giorno/notte automatica o forzata;
+  \item \textbf{Script dinamico}: ogni modulo ha funzioni dedicate con listener su eventi.
+\end{itemize}
+
+\section{Gestione Stato e Interazione}
+
+Ogni elemento cliccabile (es. bottoni luce, porta) è associato a una funzione JavaScript che aggiorna dinamicamente lo stato, applica modifiche al DOM e, dove previsto, salva la preferenza tramite cookie.
+
+\subsection{Esempio - Gestione Luci}
+
+\begin{lstlisting}
+// Spegnimento luci
+for (let i=0; i < luci.length; i++) {
+    luci[i].src = "img/lamp-spenta.png"
+}
+deleteCookie("btn-luci");
+
+// Accensione luci
+for (let i=0; i < luci.length; i++) {
+    luci[i].src = "img/lampadina.png";
+}
+setCookie("btn-luci", "true", 1);
+\end{lstlisting}
+
+\subsection{Modalità Giorno/Notte}
+
+L’interfaccia cambia automaticamente colore in base all’orario (06:00-18:00 giorno, altrimenti notte). L’utente può forzare manualmente la modalità tramite un pulsante.
+
+\subsection{Gestione Cookie}
+
+\begin{lstlisting}
+// Settaggio di un Cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 1000 * 60 * 60 * 24);
+    let expires = "expires=" + date.toUTCString();
+    document.cookie = `${name}=${value}; ${expires}; path=../`;
+}
+\end{lstlisting}
+Il parametro della funzione "setCookie" name identificherà il nome del Cookie che si vuole creare, value il valore associato a quel nome e days l'ammontare di giorni che si desidera mantenere attivo il Cookie.$\\$
+Formato di un Cookie in visualizzazione: "name=value".$\\$
+Formato di un Cookie in creazione: "name=value; expires=<UTC Date>; path=./".
+\vfill
+\begin{lstlisting}
+// Prendere valore di un Cookie
+function getCookie(name) {
+    const cookieArray = document.cookie.split("; ");
+
+    let result = null;
+    cookieArray.forEach(element => {
+        if(element.indexOf(name) == 0) {
+            result = element.substring(name.length + 1);
+        }
+    });
+    return result;
+}
+\end{lstlisting}
+Cicla tutto l'array dei Cookie, precedentemente inizializzato, e se trova un elemento dove il 'name' passato come paramentro si trova all'inizio di esso (indexOf(name) = 0) allora ritorna il valore di quel Cookie.$\\$
+\begin{lstlisting}
+// Eliminazione Cookie
+function deleteCookie(name) {
+    setCookie(name, null, null)
+}
+\end{lstlisting}
+
+\section{Funzionalità Implementate}
+
+\begin{itemize}
+  \item Accensione/spegnimento luci (per stanza o globalmente);
+  \item Apertura/chiusura porte;
+  \item Controllo Roomba (ON/OFF);
+  \item Attivazione irrigazione;
+  \item Visualizzazione meteo (con temperatura, vento);
+  \item Visualizzazione orario attuale;
+  \item Modalità responsive adattiva.
+\end{itemize}
+
+\section{Responsive Design}
+
+L’interfaccia è stata progettata per adattarsi automaticamente a smartphone, tablet e desktop. L’utilizzo del tag \texttt{meta viewport} e delle \texttt{media queries} CSS permette la fluidità dei contenuti.
+
+\section{Organizzazione del Codice}
+
+\subsection*{HTML}
+
+Layout semplice con tre parti principali (header, mappa della casa, pannello) basato su griglia CSS, con elementi identificabili via ID e classi. Gli elementi principali sono contenuti in div con attributi semantici.
+
+\subsection*{CSS}
+
+Lo stile principale degli elementi HTML si trova nel file style.css, per lo stile dei bottoni si ha buttons.css e infine per la mappa della casa si ha img-casa.css. Per lo stile dinamico e semplificazione di codice si hanno variabili che contengono colori per i vari elementi, questo permette di avere uno stile dinamico con un tema chiaro e un tema scuro.
+
+\subsection*{JavaScript}
+
+Lo script è suddiviso in blocchi per ogni modulo (luci, porte, meteo, ecc.). Ogni blocco contiene:
+
+\begin{itemize}
+  \item Funzione \texttt{toggle} o \texttt{update};
+  \item Event Listener al caricamento;
+  \item Salvataggio dello stato con \texttt{cookie}.
+\end{itemize}
+
+\section{Possibili Estensioni Future}
+
+\begin{itemize}
+  \item Integrazione con server back-end e database;
+  \item Autenticazione utenti;
+  \item Storico degli eventi;
+  \item Collegamento a dispositivi reali (es. MQTT, Arduino, ESP32).
+\end{itemize}
+
+\section{Note per Sviluppatori}
+
+\begin{itemize}
+  \item Utilizzare nomi coerenti per ID e classi;
+  \item Usare la stessa formattazione per la modifica o aggiunta di altri parametri o bottoni;
+  \item Testare sempre su dispositivi mobili e desktop;
+  \item Separare la logica in moduli riutilizzabili.
+\end{itemize}
+
+\section{Debug e Manutenzione}
+
+\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Problema} & \textbf{Causa} & \textbf{Soluzione} \\
+\hline
+Evento non funzionante & ID errato o listener mancante & Controllare ID elemento e listener JS \\
+\hline
+Luci non si accendono & Immagini assenti o JS corrotto & Verificare classi nel DOM e/o eventuali errori nel JS \\
+\hline
+Stato non salvato & Cookie disattivati o script errato & Verificare cookie nel browser \\
+\hline
+UI non responsive & Media query non applicata correttamente & Controllare larghezza dispositivo e/o breakpoints \\
+\hline
+\end{tabular}
+
+\section{Conclusioni}
+
+L'interfaccia della casa domotica sviluppata dalla DomotiX rappresenta un ambiente modulare e ben strutturato, pronto ad essere esteso e integrato. Questa documentazione tecnica è concepita per agevolare futuri sviluppatori nella comprensione, manutenzione e miglioramento del sistema.
+
+\vspace{1cm}
+\textit{Per ulteriori chiarimenti, fare riferimento ai commenti all'interno dei file sorgenti.}
+\end{document}
