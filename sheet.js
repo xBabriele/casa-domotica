@@ -227,14 +227,12 @@ function Luci() {
         for (let i=0; i < luci.length; i++) {
             luci[i].src = "img/lampadina.png";
         }
-        console.log("£asdasdasd")
         if (luci.length == 13)
             consumo += 10;
         setCookie("btn-luci", "true", 1);   // Salvo in un cookie lo stato del bottone
     }
 }
 btn_spegni.nextElementSibling.addEventListener("click", Luci);   // Metto l'event listener sul bottone
-console.log(cookieArray)
 
 // Bottone del termosifone e condizionatore
 if(document.getElementById("check3") != null) {  // Se non trova nella pagina il bottone del termosifone (quindi si trova nelle stanze singole) non da errore
@@ -320,7 +318,6 @@ if (document.getElementById("check4") != null) {
             setCookie("btn-irrigatori", "true", 1);
         } else {
             deleteCookie("btn-irrigatori");
-            console.log("è arrivato")
         }
     });
 }
@@ -339,8 +336,8 @@ let spegni = document.querySelector(".switch");
 let btn_spegnibili = document.querySelectorAll(".spegnibile");  // Metto all'interno dell'array tutti queli che vanno ad influenzare il consumo energetico della casa (nel HTML avranno la classe .spegnibile)
 let btn_accesi = new Array();   // Bottoni accesi prima di spegnerli tutti (così quando riaccendo (riclicco) i bottoni che erano accesi all'inizio saranno di nuovo accesi e quelli spenti rimarranno spenti)
 if (spegni != null) {
-    spegni.nextElementSibling.addEventListener("click", () => {
-        if (spegni.checked) {    // Se quando clicchiamo il bottone è acceso (e quindi vogliamo spegnere tutto)
+    spegni.addEventListener("click", () => {
+        if (spegni.previousElementSibling.checked) {    // Se quando clicchiamo il bottone è acceso (e quindi vogliamo spegnere tutto)
             btn_accesi = [];    // Ogni volta che voglio spegnere tutto mi resetta l'array
             for (let i=0, j=0; i < btn_spegnibili.length; i++) {    // Cicla tra gli elementi spegnibili e mette quelli accesi
                 if (btn_spegnibili[i].checked) {
