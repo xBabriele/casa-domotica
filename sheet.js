@@ -119,6 +119,8 @@ addEventListener("load", function() {
     if (ore >= 6 && ore <= 18) {        // se l'ora in cui ha caricato il sito è dalle 6 alle 18 mette il tema chiaro
         change_theme.checked = true;
         body.setAttribute("class", "theme-light");
+        btn_finestre.checked = true;
+        btn_porte.checked = true;
     } else {                            // sennò scuro
         change_theme.checked = false;
         body.setAttribute("class", "theme-dark");
