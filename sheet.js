@@ -18,7 +18,6 @@ let btn_porte = document.getElementById("check2");
 let btn_irrigatori = document.getElementById("check4");
 let btn_finestre = document.getElementById("check5");
 
-
 // Cookies
 let divVars = document.getElementById("setVars");   // Div per impostare i parametri
 // Input del form
@@ -46,12 +45,21 @@ if(form != null) {
         setCookie("Meteo", inMeteo.value, 1);
         setCookie("Vento", inVento.value, 1);
 
-        consumo = parseInt(getCookie("Consumo"));     // Il * 100 serve per non avere problemi con i decimali (in js se faccio 1.4 - 0.4 = 0.99999...) quindi lavoro con interi
+        consumo = parseInt(getCookie("Consumo"));
         temperatura = parseInt(getCookie("Temperatura"));
         meteo = getCookie("Meteo");
         vento = parseInt(getCookie("Vento"));
         
         divVars.setAttribute("style", "display: none;");
+
+        let data = new Date();
+        ore = data.getHours();
+        if(ore >= 18 || ore < 6) {
+            btn_finestre.checked = true;
+            btn_porte.checked = true;
+            setCookie("btn-finestre", "true", 1);
+            setCookie("btn-porte", "true", 1);
+        }
     });
 }
 // Per creare cookie non manualmente
@@ -116,12 +124,10 @@ addEventListener("load", function() {
 
     ore = data.getHours();
     
-    if (ore >= 6 && ore <= 18) {        // se l'ora in cui ha caricato il sito è dalle 6 alle 18 mette il tema chiaro
+    if (ore >= 6 && ore < 18) {        // se l'ora in cui ha caricato il sito è dalle 6 alle 18 mette il tema chiaro
         change_theme.checked = true;
         body.setAttribute("class", "theme-light");
-        btn_finestre.checked = true;
-        btn_porte.checked = true;
-    } else {                            // sennò scuro
+    } else {                            // sennò scuro e chiude finestre e porte
         change_theme.checked = false;
         body.setAttribute("class", "theme-dark");
     }
@@ -143,7 +149,7 @@ addEventListener("load", function() {
 
     // Li visualizzo
     testo_temp.innerHTML = temperatura + " °C";
-    testo_consumo.innerHTML = consumo/100 + " kW/h";
+    testo_consumo.innerHTML = consumo/100 + " kW/h";    // Il / 100 serve per non avere problemi con i decimali (in js se faccio 1.4 - 0.4 = 0.99999...) quindi lavoro con interi
     testo_vento.innerHTML = vento + " km/h"
     testo_meteo.innerHTML = meteo.charAt(0).toUpperCase() + meteo.slice(1);
 
