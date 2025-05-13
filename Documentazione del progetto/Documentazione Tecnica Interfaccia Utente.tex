@@ -81,8 +81,7 @@ Il seguente documento fornisce una descrizione tecnica dettagliata dell'interfac
 
 \section{Premessa}
 
-La configurazione e la gestione della rete non fanno parte dei servizi offerti
-dal sistema. È responsabilità dell’utente disporre di un ambiente di rete compatibile e funzionante. Le eventuali manutenzioni o modifiche da apportare sono anch'esse al di fuori dei servizi offerti dall'azienda. Una volta consegnato il prodotto finito al cliente l'azienda non avrà più alcuna responsabilità sul progetto e il cliente dovrà riconoscere il diritto d'autore dell'azienda sul progetto.
+È responsabilità dell’utente disporre di un ambiente di rete compatibile e funzionante con il prodotto, con strumenti consigliati dall'azienda. Le eventuali manutenzioni o modifiche da apportare sono al di fuori dei servizi offerti dall'azienda. Una volta consegnato il prodotto finito al cliente l'azienda non avrà più alcuna responsabilità sul progetto.
 
 \section{Obiettivi del Progetto}
 
@@ -222,22 +221,14 @@ Lo script è suddiviso in blocchi per ogni modulo (luci, porte, meteo, ecc.). Og
   \item Salvataggio dello stato con \texttt{cookie}.
 \end{itemize}
 
-\section{Possibili Estensioni Future}
-
-\begin{itemize}
-  \item Integrazione con server back-end e database;
-  \item Autenticazione utenti;
-  \item Storico degli eventi;
-  \item Collegamento a dispositivi reali (es. MQTT, Arduino, ESP32).
-\end{itemize}
-
 \section{Note per Sviluppatori}
 
 \begin{itemize}
-  \item Utilizzare nomi coerenti per ID e classi;
-  \item Usare la stessa formattazione per la modifica o aggiunta di altri parametri o bottoni;
-  \item Testare sempre su dispositivi mobili e desktop;
-  \item Separare la logica in moduli riutilizzabili.
+  \item Utilizzati nomi coerenti e semantici per ID e classi;
+  \item Uso di componenti facilmente scalabili e intuitivi;
+  \item Testato su dispositivi mobili e desktop;
+  \item Testato su diverse piattaforme e/o browser;
+  \item Uso di commenti intuitivi ed esplicativi.
 \end{itemize}
 
 \section{Debug e Manutenzione}
@@ -256,10 +247,10 @@ UI non responsive & Media query non applicata correttamente & Controllare larghe
 \hline
 \end{tabular}
 
+\vspace{0.8cm}
+\textit{Per ulteriori chiarimenti, fare riferimento ai commenti all'interno dei file sorgenti.}
+
 \section{Conclusioni}
 
 L'interfaccia della casa domotica sviluppata dalla DomotiX rappresenta un ambiente modulare e ben strutturato, pronto ad essere esteso e integrato. Questa documentazione tecnica è concepita per agevolare futuri sviluppatori nella comprensione, manutenzione e miglioramento del sistema.
-
-\vspace{1cm}
-\textit{Per ulteriori chiarimenti, fare riferimento ai commenti all'interno dei file sorgenti.}
 \end{document}
