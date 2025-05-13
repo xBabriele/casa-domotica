@@ -4,9 +4,6 @@ let temperatura;
 let meteo;
 let vento;
 
-let cambio_consumo = true;  // Usati per avviare gli interal (sempre uguali a true)
-let cambio_temp = true;
-
 // Dichiaro i bottoni
 let btn_spegni = document.getElementById("check1");
 let btn_termosifone = document.getElementById("check3");
@@ -138,7 +135,6 @@ addEventListener("load", function() {
         second: '2-digit',
         hour12: false       // false per avere l'ora in formato 24
     }).format(data);
-
     date.innerHTML = ora;
 
     // Inizializzo i parametri
@@ -187,21 +183,15 @@ setInterval(function () {
     date.innerHTML = ora;
 }, 1000);
 
-// Aggiorno la temperatura e il consumo elettrico ogni mezzo secondo
 
-
-
-// FAI DUE FUNZIONI: AGGIORNA_TEMP E AGGIORNA_CONSUMO così da non aggiornare per nulla una cosa che non cambia (ogni volta che cambi consumo o temp chiami quelle funzioni (mettendo all'interno l'aggiornamento dei cookie))
-setInterval(() => {
-    if (cambio_temp) {
-        testo_temp.innerHTML = temperatura + " °C";
-    }
-    if (cambio_consumo) {
-        testo_consumo.innerHTML = consumo/100 + " kW/h";
-        setCookie("Consumo", consumo, 1);
-    }
-}, 500);
-
+// Funzioni per l'aggiornamento del consumo e temperatura della casa
+function aggiorna_consumo() {
+    testo_consumo.innerHTML = consumo/100 + " kW/h";
+    setCookie("Consumo", consumo, 1);
+}
+function aggiorna_temperatura() {
+    testo_temp.innerHTML = temperatura + " °C";
+}
 
 
 // Evento per nascondere lampadine all'interno della casa (per visualizzarla meglio)
@@ -220,6 +210,7 @@ btn_settings.addEventListener("click", () => {
         }
     }
 });
+
 // Evento del bottone di spegnimento luci
 let luci_accese = new Array();
 // Faccio una funzione e non direttamente l'event listener così poi posso richiamarla
@@ -239,8 +230,10 @@ function Luci() {
             consumo += 10;
         setCookie("btn-luci", "true", 1);   // Salvo in un cookie lo stato del bottone
     }
+    aggiorna_consumo();
 }
 btn_spegni.nextElementSibling.addEventListener("click", Luci);   // Metto l'event listener sul bottone
+
 
 // Bottone del termosifone e condizionatore
 if(document.getElementById("check3") != null) {  // Se non trova nella pagina il bottone del termosifone (quindi si trova nelle stanze singole) non da errore
@@ -257,6 +250,7 @@ if(document.getElementById("check3") != null) {  // Se non trova nella pagina il
             consumo -= 40;
             deleteCookie("btn-termosifone");
         }
+        aggiorna_consumo();
     });
     btn_condizionatore.nextElementSibling.addEventListener("click", () => {
         if (!btn_condizionatore.checked) {   // quando attivo il condizionatore, disattivo il termosifone in automatico
@@ -273,6 +267,7 @@ if(document.getElementById("check3") != null) {  // Se non trova nella pagina il
             consumo -= 15;
             deleteCookie("btn-condizionatore");
         }
+        aggiorna_consumo();
     });
     setInterval(() => {
         if (btn_termosifone.checked) {       // Aumenta la temperatura di un grado ogni 8 secondi fino a 26 gradi
@@ -292,9 +287,12 @@ if(document.getElementById("check3") != null) {  // Se non trova nella pagina il
                 temperatura--;
             }
         }
+        aggiorna_temperatura();
+        aggiorna_consumo();
         setCookie("Temperatura", temperatura, 1);
     }, 8000);
 }
+
 
 // Bottone del Roomba (aspirapolvere automatico)
 if (document.getElementById("check7") != null) {
@@ -306,9 +304,9 @@ if (document.getElementById("check7") != null) {
             consumo -= 10;
             deleteCookie("btn-roomba");
         }
+        aggiorna_consumo();
     });
 }
-
 // Pulsanti per: irrigatori, porte, tapparelle/finestre (non influenzano il consumo della casa)
 // Pulsante per le porte
 if (document.getElementById("check2") != null) {
@@ -320,6 +318,7 @@ if (document.getElementById("check2") != null) {
         }
     });
 }
+// irrigatori
 if (document.getElementById("check4") != null) {
     btn_irrigatori.nextElementSibling.addEventListener("click", () => {
         if (!btn_irrigatori.checked) {
@@ -329,6 +328,7 @@ if (document.getElementById("check4") != null) {
         }
     });
 }
+// finestre
 if (document.getElementById("check5") != null) {
     btn_finestre.nextElementSibling.addEventListener("click", () => {
         if (!btn_finestre.checked) {
@@ -412,5 +412,6 @@ if (spegni != null) {
                 }
             }
         }
+        aggiorna_consumo();
     });
 }
